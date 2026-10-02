@@ -2,9 +2,9 @@
   <Configurations>
     <Platform Name="x64" />
   </Configurations>
-  <Project Path="../module/TakoEngine/project/externals/DirectXTex/DirectXTex_Desktop_2022_Win10.vcxproj" />
-  <Project Path="../module/TakoEngine/project/externals/imgui-node-editor/imgui-node-editor.vcxproj" />
-  <Project Path="../module/TakoEngine/project/externals/imgui/imgui.vcxproj" />
-  <Project Path="../module/TakoEngine/project/TakoEngine.vcxproj" />
-  <Project Path="app.vcxproj" />
+  <Project Path="../module/TakoEngine/project/externals/DirectXTex/DirectXTex_Desktop_2022_Win10.vcxproj" Id="371b9fa9-4c90-4ac6-a123-aced756d6c77" />
+  <Project Path="../module/TakoEngine/project/externals/imgui-node-editor/imgui-node-editor.vcxproj" Id="0517d071-8cdd-4f0b-bdc1-05fcf6331bcc" />
+  <Project Path="../module/TakoEngine/project/externals/imgui/imgui.vcxproj" Id="ffa51982-471d-4530-909e-c8fb8fe4f342" />
+  <Project Path="../module/TakoEngine/project/TakoEngine.vcxproj" Id="5667d840-f080-4f39-b016-fd2c1b9375e7" />
+  <Project Path="app.vcxproj" Id="ae37d976-53cd-4608-a567-8b84ee7237a0" />
 </Solution>
