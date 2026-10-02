@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="../module/TakoEngine/project/externals/DirectXTex/DirectXTex_Desktop_2022_Win10.vcxproj" />
+  <Project Path="../module/TakoEngine/project/externals/imgui-node-editor/imgui-node-editor.vcxproj" />
+  <Project Path="../module/TakoEngine/project/externals/imgui/imgui.vcxproj" />
+  <Project Path="../module/TakoEngine/project/TakoEngine.vcxproj" />
+  <Project Path="app.vcxproj" />
+</Solution>
