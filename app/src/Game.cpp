@@ -8,16 +8,12 @@ using namespace Tako;
 
 void Game::Initialize()
 {
-  winApp_->SetWindowSize(1920, 1080);
-
-  winApp_->SetWindowTitle(L"FL1_OKNMS");
-
   TakoFramework::Initialize();
 
   // シーンの初期化
   sceneFactory_ = std::make_unique<SceneFactory>();
   SceneManager::GetInstance()->SetSceneFactory(sceneFactory_.get());
-  SceneManager::GetInstance()->ChangeScene("game", 0.0f);
+  SceneManager::GetInstance()->ChangeToStartupScene();
 }
 
 void Game::Finalize()

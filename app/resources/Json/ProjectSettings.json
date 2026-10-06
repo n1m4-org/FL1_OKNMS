@@ -1,13 +1,45 @@
 {
+    "Application": {
+        "ProductName": "TakoEngine",
+        "StartupScene": ""
+    },
     "Display": {
+        "Height": 1080,
+        "Resizable": true,
+        "StartFullscreen": false,
         "TargetFPS": 60,
-        "VSync": true
+        "VSync": true,
+        "Width": 1920
+    },
+    "Input": {
+        "ActionNameHeader": "",
+        "Actions": {},
+        "Axes": {},
+        "AxisNameHeader": "",
+        "LeftStickDeadZone": 0.23953978717327118,
+        "RightStickDeadZone": 0.26517534255981445
+    },
+    "Physics": {
+        "CollisionPairs": [],
+        "LayerEnumHeader": "",
+        "Layers": []
     },
     "Rendering": {
+        "AntiAliasing": "None",
+        "ClearColor": [
+            0.17000000178813934,
+            0.17000000178813934,
+            0.17000000178813934,
+            1.0
+        ],
         "MaxShadowDistance": 50.0,
         "PCFKernelSize": 3,
+        "RenderScale": 1.0,
         "ShadowBias": 9.999999747378752e-05,
         "ShadowEnabled": true,
         "ShadowMapSize": 2048
+    },
+    "Time": {
+        "MaxDeltaTime": 0.10000000149011612
     }
 }
