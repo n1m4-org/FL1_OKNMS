@@ -1,5 +1,6 @@
 #include "GameScene.h"
 
+#include "DebugUIManager.h"
 #include "LineRenderer.h"
 #include "GPUParticle.h"
 #include "Input.h"
@@ -18,13 +19,25 @@ void GameScene::Initialize()
   /// ================================== ///
   ///              初期化処理              ///
   /// ================================== ///
+  
+  emitters_ = std::make_unique<EmitterManager>(GPUParticle::GetInstance());
+    
+    gauge_ = std::make_unique<SatisfactionGauge>();
+    gauge_->Initialize();
 
+#ifdef _DEBUG
+    DebugUIManager::GetInstance()->SetEmitterManager(emitters_.get());
+    DebugUIManager::GetInstance()->RegisterGameObject("Gauge", [this]{ gauge_->Debug(); });
+#endif
 
 }
 
 
 void GameScene::Finalize()
 {
+#ifdef _DEBUG
+    DebugUIManager::GetInstance()->UnregisterGameObject("Gauge");
+#endif
 
 }
 
@@ -34,7 +47,7 @@ void GameScene::Update()
   ///              更新処理               ///
   /// ================================== ///
 
-
+    gauge_->Update();
 
   if (Input::GetInstance()->TriggerKey(DIK_RETURN))
   {
@@ -58,6 +71,7 @@ void GameScene::Draw()
   // 3Dモデル共通描画設定
   Object3dBasic::GetInstance()->SetCommonRenderSetting();
 
+    gauge_->Draw();
 
 
 
