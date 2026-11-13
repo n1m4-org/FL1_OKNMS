@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="src\HUD\SatisfactionGauge\SatisfactionGauge.cpp">
+      <Filter>src\HUD\SatisfactionGauge</Filter>
+    </ClCompile>
     <ClCompile Include="src\Director\KamisamaDirector.cpp">
       <Filter>src\Director</Filter>
     </ClCompile>
@@ -20,7 +23,12 @@
     <ClCompile Include="src\Scene\SceneFactory.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="src\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
+    <ClCompile Include="src\system\EventListener.cpp">
+      <Filter>src\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\EventSubscription.cpp">
+      <Filter>src\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -32,14 +40,23 @@
     <Filter Include="src\Entity">
       <UniqueIdentifier>{31158617-7c5b-4de7-95ce-0dd3cb469311}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HUD">
+      <UniqueIdentifier>{755faf2b-5af0-417b-9061-976e6b1e0387}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Scene">
       <UniqueIdentifier>{c64eb218-0e90-4e72-87bf-9f4941cdc111}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\system">
       <UniqueIdentifier>{b6ba112c-97d7-4b2e-8951-5b3447320ca4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\HUD\SatisfactionGauge">
+      <UniqueIdentifier>{4bcc0eff-50c9-4ba9-86a9-022103c13717}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\HUD\SatisfactionGauge\SatisfactionGauge.h">
+      <Filter>src\HUD\SatisfactionGauge</Filter>
+    </ClInclude>
     <ClInclude Include="src\Director\KamisamaDirector.h">
       <Filter>src\Director</Filter>
     </ClInclude>
@@ -58,6 +75,11 @@
     <ClInclude Include="src\Scene\SceneFactory.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="src\HUD\SatisfactionGauge\SatisfactionGauge.h" />
+    <ClInclude Include="src\system\EventListener.h">
+      <Filter>src\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\EventSubscription.h">
+      <Filter>src\system</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
