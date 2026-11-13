@@ -8,8 +8,8 @@
 
 class SatisfactionGauge
 {
-    constexpr float kMaxAngle_ = 270.f;
-    constexpr float kStartAngleOffset_ = (360.f - kMaxAngle_) / 2.f; 
+    static constexpr float kMaxAngle_ = 270.f;
+    static constexpr float kStartAngleOffset_ = (360.f - kMaxAngle_) / 2.f; 
 
     std::unique_ptr<Tako::Object3d> gauge_;
     std::unique_ptr<Tako::Object3d> background_;
