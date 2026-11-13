@@ -16,7 +16,7 @@ class SatisfactionGauge
     float denominator = 0.f;
     float fraction_ = 0.f;
 
-	Tako::Vector2 radius_ {0.3f, 0.5f };
+    Tako::Vector2 radius_ {0.3f, 0.5f };
 
     Tako::PrimitiveBuilder::RingParams gaugeParams_{
         .innerRadius = radius_.x,
@@ -48,15 +48,15 @@ class SatisfactionGauge
 
     float percentage_ = 0.f;
 
-	std::chrono::system_clock::time_point start_;
-	float decay_ = 0.f;
-	float decayInterval_ = 1.f;
+    std::chrono::system_clock::time_point start_;
+    float decay_ = 0.f;
+    float decayInterval_ = 1.f;
 
 #ifdef _DEBUG
-	float chargeBuf_ = 0.f;
-	float reduceBuf_ = 0.f;
-	float decayBuf_ = 0.f;
-	float intervalBuf_ = 0.f;
+    float chargeBuf_ = 0.f;
+    float reduceBuf_ = 0.f;
+    float decayBuf_ = 0.f;
+    float intervalBuf_ = 0.f;
 #endif
 
 public:
@@ -65,11 +65,11 @@ public:
     void Draw() const;
     void Debug();
 
-    void Charge(float _);
-    void Reduce(float _);
-	void SetDecay(float _value, float _interval);
+    void Charge(float value);
+    void Reduce(float value);
+    void SetDecay(float value, float interval);
 
 private:
     void RebuildRings();
-	void Decay();
+    void Decay();
 };

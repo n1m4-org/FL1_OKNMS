@@ -76,7 +76,7 @@ void SatisfactionGauge::Debug()
 
     ImGui::DragFloat3("Scale", &transform_.scale.x, 0.01f);
 
-	isRingDirty_ |= ImGui::DragFloat2("Radius", &radius_.x, 0.1f, 0.f, radius_.y + 0.1f);
+    isRingDirty_ |= ImGui::DragFloat2("Radius", &radius_.x, 0.1f, 0.f, radius_.y + 0.1f);
 
     ImGui::SeparatorText("Gauge");
     isRingDirty_ |= ImGui::DragFloat("Percentage", &percentage_, 1.f, 0.f, 100.f);
@@ -134,30 +134,30 @@ void SatisfactionGauge::Debug()
 #endif
 }
 
-void SatisfactionGauge::Charge(const float _)
+void SatisfactionGauge::Charge(const float value)
 {
-    percentage_ += _;
+    percentage_ += value;
 }
 
-void SatisfactionGauge::Reduce(const float _)
+void SatisfactionGauge::Reduce(const float value)
 {
-    percentage_ -= _;
+    percentage_ -= value;
 }
 
-void SatisfactionGauge::SetDecay(const float _value, const float _interval) 
+void SatisfactionGauge::SetDecay(const float value, const float interval) 
 {
-    decay_ = _value;
-    decayInterval_ = _interval;
+    decay_ = value;
+    decayInterval_ = interval;
 }
 
 void SatisfactionGauge::RebuildRings()
 {
-	radius_.y = std::max(radius_.x, radius_.y);
+    radius_.y = std::max(radius_.x, radius_.y);
 
     gaugeParams_.sweepAngleDeg = kMaxAngle_ * (percentage_ / 100.f);
     gaugeParams_.startAngleDeg = -kStartAngleOffset_ + kMaxAngle_/2.f - gaugeParams_.sweepAngleDeg/2.f;
-	gaugeParams_.innerRadius = radius_.x;
-	gaugeParams_.outerRadius = radius_.y;
+    gaugeParams_.innerRadius = radius_.x;
+    gaugeParams_.outerRadius = radius_.y;
 
     gauge_->SetModel(Tako::PrimitiveBuilder::CreateRing(gaugeParams_));
     gauge_->SetEnableLighting(false);
@@ -165,7 +165,7 @@ void SatisfactionGauge::RebuildRings()
 
     backgroundParams_.startAngleDeg = -kStartAngleOffset_;
     backgroundParams_.innerRadius = radius_.x;
-	backgroundParams_.outerRadius = radius_.y;
+    backgroundParams_.outerRadius = radius_.y;
     background_->SetModel(Tako::PrimitiveBuilder::CreateRing(backgroundParams_));
     background_->SetEnableLighting(false);
     background_->SetMaterialColor(backgroundColor_);
@@ -180,7 +180,7 @@ void SatisfactionGauge::Decay()
 
     if (decayInterval_ <= std::chrono::duration<float>(end - start_).count())
     {
-		isRingDirty_ = true;
+        isRingDirty_ = true;
 
         percentage_ -= decay_;
         percentage_ = std::clamp(percentage_, 0.f, 100.f);
