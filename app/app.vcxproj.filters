@@ -35,6 +35,9 @@
     <Filter Include="src\Scene">
       <UniqueIdentifier>{c64eb218-0e90-4e72-87bf-9f4941cdc111}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\system">
+      <UniqueIdentifier>{b6ba112c-97d7-4b2e-8951-5b3447320ca4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Director\KamisamaDirector.h">
