@@ -9,6 +9,8 @@
     <ClCompile Include="src\Scene\SceneFactory.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\EventListener.cpp" />
+    <ClCompile Include="src\system\EventSubscription.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
@@ -18,6 +20,8 @@
     <ClInclude Include="src\Scene\SceneFactory.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\system\EventListener.h" />
+    <ClInclude Include="src\system\EventSubscription.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
