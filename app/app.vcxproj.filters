@@ -9,6 +9,11 @@
     <ClCompile Include="src\Scene\SceneFactory.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entity\Kamisama.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Director\KamisamaDirector.cpp" />
+    <ClCompile Include="src\Director\Lane.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
@@ -18,10 +23,18 @@
     <ClInclude Include="src\Scene\SceneFactory.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\Entity\Kamisama.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Director\KamisamaDirector.h" />
+    <ClInclude Include="src\Director\Lane.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
       <UniqueIdentifier>{79ca3ff8-497a-4550-ac59-0cd990f29982}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity">
+      <UniqueIdentifier>{09b8db29-c37f-4d12-a0a1-05bf01dc6cfc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
