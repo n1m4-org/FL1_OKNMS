@@ -1,0 +1,202 @@
+{
+  "actors": [
+    {
+      "type": "Actor",
+      "id": 1,
+      "properties": {
+        "name": "SatisfactionGauge",
+        "transform": {
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "components": {
+        "MeshComponent": {
+          "type": "MeshComponent",
+          "order": 0,
+          "properties": {
+            "renderSettings": {
+              "CastShadow": false,
+              "Values": {
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "enableLighting": 0
+              }
+            }
+          }
+        },
+        "SatisfactionGauge": {
+          "type": "ScriptComponent",
+          "order": 1,
+          "properties": {
+            "background": {
+              "actor": 2
+            },
+            "script": "SatisfactionGauge"
+          }
+        }
+      }
+    },
+    {
+      "type": "Actor",
+      "id": 2,
+      "parent": 1,
+      "properties": {
+        "name": "Background",
+        "transform": {
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "components": {
+        "MeshComponent": {
+          "type": "MeshComponent",
+          "order": 0,
+          "properties": {
+            "renderSettings": {
+              "CastShadow": false,
+              "Values": {
+                "color": [
+                  0.3,
+                  0.3,
+                  0.3,
+                  1.0
+                ],
+                "enableLighting": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Actor",
+      "id": 3,
+      "properties": {
+        "name": "Floor",
+        "transform": {
+          "scale": [
+            100.0,
+            1.0,
+            100.0
+          ],
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "components": {
+        "MeshComponent": {
+          "type": "MeshComponent",
+          "order": 0,
+          "properties": {
+            "model": "plane.obj"
+          }
+        }
+      }
+    },
+    {
+      "type": "Actor",
+      "id": 4,
+      "properties": {
+        "name": "KamisamaDirector",
+        "transform": {
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "components": {
+        "KamisamaDirector": {
+          "type": "ScriptComponent",
+          "order": 0,
+          "properties": {
+            "script": "KamisamaDirector"
+          }
+        }
+      }
+    },
+    {
+      "type": "Actor",
+      "id": 5,
+      "properties": {
+        "name": "EventDispatcher",
+        "transform": {
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "components": {
+        "EventDispatcher": {
+          "type": "ScriptComponent",
+          "order": 0,
+          "properties": {
+            "script": "EventDispatcher"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 name: windows_build_test
 on: [pull_request]
 env:
-  SOLUTION_FILE_PATH: app/app.slnx
+  SOLUTION_FILE_PATH: FL1_OKNMS.slnx
 
 jobs:
   build:
@@ -18,9 +18,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
-    
+
+      # FL1_OKNMS.takoproject に書いてあるバージョンの SDK を、エンジンのリリースから Engine/TakoEngine に入れる
+      - name: Install TakoEngine
+        shell: pwsh
+        run: ./UpdateEngine.ps1
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
         with:

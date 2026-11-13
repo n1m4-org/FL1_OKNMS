@@ -2,11 +2,9 @@
   "DefaultProfile": "App",
   "Profiles": {
     "App": {
-      "VcxprojPath": "..\\app\\app.vcxproj",
+      "VcxprojPath": "..\\GameProject\\FL1_OKNMS.vcxproj",
       "StripPrefixes": [],
-      "RootFileNames": [
-        "main.cpp"
-      ]
+      "RootFileNames": []
     }
   }
 }
