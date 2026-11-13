@@ -26,6 +26,7 @@ void SatisfactionGauge::Initialize()
 
 void SatisfactionGauge::Update()
 {
+    // 要素の変更があったフレームのみリングのリビルド
     if (isRingDirty_)
     {
         RebuildRings();

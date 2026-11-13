@@ -65,8 +65,20 @@ public:
     void Draw() const;
     void Debug();
 
+    /** @brief パーセントを追加する
+      * @param value
+      */
     void Charge(float value);
+
+    /** @brief パーセントを減らす
+     * @param value
+     */
     void Reduce(float value);
+
+    /** @brief 自動で減る値の設定
+     * @param value 値
+     * @param interval 間隔
+     */
     void SetDecay(float value, float interval);
 
 private:
