@@ -106,6 +106,8 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Scene\GameScene.cpp" />
     <ClCompile Include="src\Scene\SceneFactory.cpp" />
+    <ClCompile Include="src\system\EventListener.cpp" />
+    <ClCompile Include="src\system\EventSubscription.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\module\TakoEngine\project\externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">
@@ -129,6 +131,8 @@
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Scene\GameScene.h" />
     <ClInclude Include="src\Scene\SceneFactory.h" />
+    <ClInclude Include="src\system\EventListener.h" />
+    <ClInclude Include="src\system\EventSubscription.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
