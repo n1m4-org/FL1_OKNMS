@@ -14,7 +14,8 @@
 #include <Model.h>
 
 #ifdef _DEBUG
-#include"ImGui.h"
+#include "ImGui.h"
+#include "DebugUIManager.h"
 #endif
 
 using namespace Tako;
@@ -24,8 +25,16 @@ void GameScene::Initialize()
     /// ================================== ///
     ///              初期化処理              ///
     /// ================================== ///
+  
+    emitters_ = std::make_unique<EmitterManager>(GPUParticle::GetInstance());
+    
+    gauge_ = std::make_unique<SatisfactionGauge>();
+    gauge_->Initialize();
 
-
+#ifdef _DEBUG
+    DebugUIManager::GetInstance()->SetEmitterManager(emitters_.get());
+    DebugUIManager::GetInstance()->RegisterGameObject("Gauge", [this]{ gauge_->Debug(); });
+#endif
     pFloor_ = std::make_unique<Tako::Object3d>();
     pFloor_->Initialize();
     pFloor_->SetModel(std::move(Tako::PrimitiveBuilder::CreatePlane()));
@@ -35,12 +44,14 @@ void GameScene::Initialize()
     // 初期化
     pKamisamaDirector_ = std::make_unique<KamisamaDirector>();
     pKamisamaDirector_->Initialize();
-
 }
 
 
 void GameScene::Finalize()
 {
+#ifdef _DEBUG
+    DebugUIManager::GetInstance()->UnregisterGameObject("Gauge");
+#endif
 
 }
 
@@ -50,6 +61,7 @@ void GameScene::Update()
     ///              更新処理               ///
     /// ================================== ///
 
+    gauge_->Update();
     pFloor_->Update();
     pKamisamaDirector_->Update();
 
@@ -83,6 +95,7 @@ void GameScene::Draw()
 
 
 
+    gauge_->Draw();
 
     //-------------------Modelの描画-------------------//
     // 3Dモデル共通描画設定

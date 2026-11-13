@@ -20,12 +20,7 @@
     <ClCompile Include="src\Scene\SceneFactory.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="src\system\EventListener.cpp">
-      <Filter>src\system</Filter>
-    </ClCompile>
-    <ClCompile Include="src\system\EventSubscription.cpp">
-      <Filter>src\system</Filter>
-    </ClCompile>
+    <ClCompile Include="src\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -63,11 +58,6 @@
     <ClInclude Include="src\Scene\SceneFactory.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="src\system\EventListener.h">
-      <Filter>src\system</Filter>
-    </ClInclude>
-    <ClInclude Include="src\system\EventSubscription.h">
-      <Filter>src\system</Filter>
-    </ClInclude>
+    <ClInclude Include="src\HUD\SatisfactionGauge\SatisfactionGauge.h" />
   </ItemGroup>
 </Project>

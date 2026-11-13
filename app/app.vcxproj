@@ -98,6 +98,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
     <ClCompile Include="src\Director\KamisamaDirector.cpp" />
     <ClCompile Include="src\Director\Lane.cpp" />
     <ClCompile Include="src\Entity\Kamisama.cpp" />
@@ -123,6 +124,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\HUD\SatisfactionGauge\SatisfactionGauge.h" />
     <ClInclude Include="src\Director\KamisamaDirector.h" />
     <ClInclude Include="src\Director\Lane.h" />
     <ClInclude Include="src\Entity\Kamisama.h" />
