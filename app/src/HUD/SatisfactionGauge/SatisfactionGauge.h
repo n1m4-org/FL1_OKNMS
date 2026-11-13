@@ -16,16 +16,18 @@ class SatisfactionGauge
     float denominator = 0.f;
     float fraction_ = 0.f;
 
+	Tako::Vector2 radius_ {0.3f, 0.5f };
+
     Tako::PrimitiveBuilder::RingParams gaugeParams_{
-        .innerRadius = 0.3f,
-        .outerRadius = 0.5f,
+        .innerRadius = radius_.x,
+        .outerRadius = radius_.y,
         .segments = 64,
         .startAngleDeg = 0.f,
         .sweepAngleDeg = 30.f
     };
     Tako::PrimitiveBuilder::RingParams backgroundParams_{
-        .innerRadius = 0.3f,
-        .outerRadius = 0.5f,
+        .innerRadius = radius_.x,
+        .outerRadius = radius_.y,
         .segments = 64,
         .startAngleDeg = 0.f,
         .sweepAngleDeg = MAX_ANGLE

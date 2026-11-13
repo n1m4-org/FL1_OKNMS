@@ -36,7 +36,8 @@ void SatisfactionGauge::Update()
         constexpr float kHalfPi = std::numbers::pi_v<float> * 0.5f;
     
         const Tako::Vector3 cameraRotate = camera->GetRotate();
-        transform_.rotate = {
+        transform_.rotate = 
+        {
             cameraRotate.x - kHalfPi,
             cameraRotate.y,
             cameraRotate.z
@@ -67,7 +68,6 @@ void SatisfactionGauge::Debug()
     ImGui::SeparatorText("Transform");
     ImGui::DragFloat3("Translate", &transform_.translate.x, 0.01f);
 
-    // 内部はラジアン、UI は度で扱う
     constexpr float kRadToDeg = 180.f / std::numbers::pi_v<float>;
     Tako::Vector3 rotateDeg = transform_.rotate * kRadToDeg;
     if (ImGui::DragFloat3("Rotate", &rotateDeg.x, 1.f, -360.f, 360.f, "%.1f deg")) {
@@ -75,6 +75,8 @@ void SatisfactionGauge::Debug()
     }
 
     ImGui::DragFloat3("Scale", &transform_.scale.x, 0.01f);
+
+	isRingDirty_ |= ImGui::DragFloat2("Radius", &radius_.x, 0.1f, 0.f, radius_.y + 0.1f);
 
     ImGui::SeparatorText("Gauge");
     isRingDirty_ |= ImGui::DragFloat("Percentage", &percentage_, 1.f, 0.f, 100.f);
@@ -150,13 +152,20 @@ void SatisfactionGauge::SetDecay(const float _value, const float _interval)
 
 void SatisfactionGauge::RebuildRings()
 {
+	radius_.y = std::max(radius_.x, radius_.y);
+
     gaugeParams_.sweepAngleDeg = MAX_ANGLE * (percentage_ / 100.f);
     gaugeParams_.startAngleDeg = -START_ANGLE_OFFSET + MAX_ANGLE/2.f - gaugeParams_.sweepAngleDeg/2.f;
+	gaugeParams_.innerRadius = radius_.x;
+	gaugeParams_.outerRadius = radius_.y;
+
     gauge_->SetModel(Tako::PrimitiveBuilder::CreateRing(gaugeParams_));
     gauge_->SetEnableLighting(false);
     gauge_->SetMaterialColor(gaugeColor_);
 
     backgroundParams_.startAngleDeg = -START_ANGLE_OFFSET;
+    backgroundParams_.innerRadius = radius_.x;
+	backgroundParams_.outerRadius = radius_.y;
     background_->SetModel(Tako::PrimitiveBuilder::CreateRing(backgroundParams_));
     background_->SetEnableLighting(false);
     background_->SetMaterialColor(backgroundColor_);
