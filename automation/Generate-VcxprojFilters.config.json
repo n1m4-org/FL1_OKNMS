@@ -1,0 +1,12 @@
+{
+  "DefaultProfile": "App",
+  "Profiles": {
+    "App": {
+      "VcxprojPath": "..\\app\\app.vcxproj",
+      "StripPrefixes": [],
+      "RootFileNames": [
+        "main.cpp"
+      ]
+    }
+  }
+}
