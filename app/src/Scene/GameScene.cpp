@@ -1,6 +1,5 @@
 #include "GameScene.h"
 
-#include "DebugUIManager.h"
 #include "LineRenderer.h"
 #include "GPUParticle.h"
 #include "Input.h"
@@ -9,7 +8,8 @@
 #include "SpriteBasic.h"
 
 #ifdef _DEBUG
-#include"ImGui.h"
+#include "ImGui.h"
+#include "DebugUIManager.h"
 #endif
 
 using namespace Tako;
