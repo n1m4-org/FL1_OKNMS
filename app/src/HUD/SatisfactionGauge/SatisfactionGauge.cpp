@@ -154,8 +154,8 @@ void SatisfactionGauge::RebuildRings()
 {
 	radius_.y = std::max(radius_.x, radius_.y);
 
-    gaugeParams_.sweepAngleDeg = MAX_ANGLE * (percentage_ / 100.f);
-    gaugeParams_.startAngleDeg = -START_ANGLE_OFFSET + MAX_ANGLE/2.f - gaugeParams_.sweepAngleDeg/2.f;
+    gaugeParams_.sweepAngleDeg = kMaxAngle_ * (percentage_ / 100.f);
+    gaugeParams_.startAngleDeg = -kStartAngleOffset_ + kMaxAngle_/2.f - gaugeParams_.sweepAngleDeg/2.f;
 	gaugeParams_.innerRadius = radius_.x;
 	gaugeParams_.outerRadius = radius_.y;
 
@@ -163,7 +163,7 @@ void SatisfactionGauge::RebuildRings()
     gauge_->SetEnableLighting(false);
     gauge_->SetMaterialColor(gaugeColor_);
 
-    backgroundParams_.startAngleDeg = -START_ANGLE_OFFSET;
+    backgroundParams_.startAngleDeg = -kStartAngleOffset_;
     backgroundParams_.innerRadius = radius_.x;
 	backgroundParams_.outerRadius = radius_.y;
     background_->SetModel(Tako::PrimitiveBuilder::CreateRing(backgroundParams_));

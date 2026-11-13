@@ -8,8 +8,8 @@
 
 class SatisfactionGauge
 {
-    const float MAX_ANGLE = 270.f;
-    const float START_ANGLE_OFFSET = (360.f - MAX_ANGLE) / 2.f; 
+    constexpr float kMaxAngle_ = 270.f;
+    constexpr float kStartAngleOffset_ = (360.f - kMaxAngle_) / 2.f; 
 
     std::unique_ptr<Tako::Object3d> gauge_;
     std::unique_ptr<Tako::Object3d> background_;
@@ -30,7 +30,7 @@ class SatisfactionGauge
         .outerRadius = radius_.y,
         .segments = 64,
         .startAngleDeg = 0.f,
-        .sweepAngleDeg = MAX_ANGLE
+        .sweepAngleDeg = kMaxAngle_
     };
     Tako::Vector4 gaugeColor_ = { 1.f, 1.f, 1.f, 1.f };
     Tako::Vector4 backgroundColor_ = { 0.3f, 0.3f, 0.3f, 1.f };
