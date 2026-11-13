@@ -346,7 +346,9 @@ tools/
 
 GameProject/imgui.ini
 GameProject/EngineResources/
-app/EngineResources/
+
+# エンジン。UpdateEngine.bat が、FL1_OKNMS.takoproject に書いてあるバージョンを入れる
+Engine/
 
 # Claude Code temporary files
 tmpclaude-*

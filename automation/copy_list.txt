@@ -7,17 +7,18 @@
 #   - コピー先には末端の名前のみで配置されます(中間階層は落とされます)。
 #
 # 前提: 事前に Release|x64 をビルド済みであること
-#       (app/Bin/Release に Game.exe / dxcompiler.dll / dxil.dll が生成されている)
+#       (Generated/outputs/Release に 4304_Title.exe / dxcompiler.dll / dxil.dll と、
+#        resources / EngineResources の写しが生成されている)
 # 使い方: pwsh automation/Copy-FileList.ps1 <出力先フォルダ>
 
 # --- リポジトリルート ---
-..\app
+..
 
 # --- 実行ファイル & 実行時DLL (Releaseビルド成果物) ---
-.\Bin\Release\Game.exe
-.\Bin\Release\dxcompiler.dll
-.\Bin\Release\dxil.dll
+.\Generated\outputs\Release\4304_Title.exe
+.\Generated\outputs\Release\dxcompiler.dll
+.\Generated\outputs\Release\dxil.dll
 
 # --- リソース (exeと同じ階層に配置される必要がある) ---
-.\resources
-.\EngineResources
+.\Generated\outputs\Release\resources
+.\Generated\outputs\Release\EngineResources

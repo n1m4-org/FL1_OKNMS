@@ -1,0 +1,49 @@
+{
+  "type": "Actor",
+  "properties": {
+    "name": "Kamisama",
+    "transform": {
+      "scale": [
+        1.0,
+        2.0,
+        1.0
+      ],
+      "rotate": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "translate": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "components": {
+    "MeshComponent": {
+      "type": "MeshComponent",
+      "order": 0,
+      "properties": {
+        "model": "EngineResources/Model/white_cube.gltf",
+        "renderSettings": {
+          "Values": {
+            "color": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        }
+      }
+    },
+    "Kamisama": {
+      "type": "ScriptComponent",
+      "order": 1,
+      "properties": {
+        "script": "Kamisama"
+      }
+    }
+  }
+}

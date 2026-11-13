@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" InitialTargets="TakoCheckEngine" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ae37d976-53cd-4608-a567-8b84ee7237a0}</ProjectGuid>
+    <RootNamespace>FL1_OKNMS</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <!-- Debug はエディタ（TakoEditor.exe）が読む DLL、Release は 1 つの exe -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\Engine\TakoEngine\build\TakoEngineGame.props" Condition="exists('$(MSBuildProjectDirectory)\..\Engine\TakoEngine\build\TakoEngineGame.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <!-- Debug の出力名（Game.dll）はエンジンの props が決める -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>4304_Title</TargetName>
+  </PropertyGroup>
+  <!-- Windows.h の min / max マクロを止める（std::min / std::max を使うため） -->
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Script\Director\KamisamaDirector.cpp" />
+    <ClCompile Include="Script\Entity\Kamisama.cpp" />
+    <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
+    <ClCompile Include="Script\system\EventDispatcher.cpp" />
+    <ClCompile Include="Source\Director\Lane.cpp" />
+    <ClCompile Include="Source\system\EventListener.cpp" />
+    <ClCompile Include="Source\system\EventSubscription.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Script\Director\KamisamaDirector.h" />
+    <ClInclude Include="Script\Entity\Kamisama.h" />
+    <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />
+    <ClInclude Include="Script\system\EventDispatcher.h" />
+    <ClInclude Include="Source\Director\Lane.h" />
+    <ClInclude Include="Source\system\EventListener.h" />
+    <ClInclude Include="Source\system\EventSubscription.h" />
+  </ItemGroup>
+  <!-- エンジンが無い（clone した直後など）と設定ファイルを読めないので、ビルドの最初に、やることを伝えて止める。
+       Visual Studio が裏で行う設計時ビルドでは出さない（プロジェクトを開いただけでエラーが並ばないように） -->
+  <Target Name="TakoCheckEngine" Condition="'$(DesignTimeBuild)' != 'true' and !exists('$(MSBuildProjectDirectory)\..\Engine\TakoEngine\build\TakoEngineGame.props')">
+    <Error Text="TakoEngine is not installed in this project. Run UpdateEngine.bat in the project root, then build again. (エンジンがありません。プロジェクトのルートの UpdateEngine.bat を実行してから、もう一度ビルドしてください)" />
+  </Target>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

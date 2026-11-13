@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Script\Director\KamisamaDirector.cpp">
+      <Filter>Script\Director</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Entity\Kamisama.cpp">
+      <Filter>Script\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp">
+      <Filter>Script\HUD\SatisfactionGauge</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\EventDispatcher.cpp">
+      <Filter>Script\system</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Director\Lane.cpp">
+      <Filter>Source\Director</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\system\EventListener.cpp">
+      <Filter>Source\system</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\system\EventSubscription.cpp">
+      <Filter>Source\system</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Script">
+      <UniqueIdentifier>{6be4ac22-6cd1-47f6-b9c8-53bda95c5f70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{f546c011-164e-49e9-85ce-30b915de4439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Director">
+      <UniqueIdentifier>{51af6a32-bd7b-410d-9469-b79ab16c1765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Entity">
+      <UniqueIdentifier>{a2f203a0-a4ac-4cc9-9c2b-71218984e208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\HUD">
+      <UniqueIdentifier>{f8329b17-7af8-48a0-b6e4-622877624078}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\system">
+      <UniqueIdentifier>{2e17388b-f75b-4482-817a-8b4a645e519e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Director">
+      <UniqueIdentifier>{124639ea-130f-4d50-897c-5873ed7cf83b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\system">
+      <UniqueIdentifier>{6f30a1d3-d7fe-4c39-add8-eaf14bfba1e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\HUD\SatisfactionGauge">
+      <UniqueIdentifier>{c3a94dd3-09fc-4d56-b3dc-ec78e326c3a5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Script\Director\KamisamaDirector.h">
+      <Filter>Script\Director</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Entity\Kamisama.h">
+      <Filter>Script\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h">
+      <Filter>Script\HUD\SatisfactionGauge</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\EventDispatcher.h">
+      <Filter>Script\system</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Director\Lane.h">
+      <Filter>Source\Director</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\system\EventListener.h">
+      <Filter>Source\system</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\system\EventSubscription.h">
+      <Filter>Source\system</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
