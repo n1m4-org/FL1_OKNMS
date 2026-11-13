@@ -98,6 +98,9 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Director\KamisamaDirector.cpp" />
+    <ClCompile Include="src\Director\Lane.cpp" />
+    <ClCompile Include="src\Entity\Kamisama.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Scene\GameScene.cpp" />
@@ -120,6 +123,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Director\KamisamaDirector.h" />
+    <ClInclude Include="src\Director\Lane.h" />
+    <ClInclude Include="src\Entity\Kamisama.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Scene\GameScene.h" />
     <ClInclude Include="src\Scene\SceneFactory.h" />
