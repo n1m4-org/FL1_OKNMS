@@ -1,9 +1,11 @@
 #include "Eater.h"
 
 #include <Actor.h>
+#include <EaseFunc.h>
 
 #include "Plate.h"
 #include "Script/HUD/SatisfactionGauge/SatisfactionGauge.h"
+#include "AudioSourceComponent.h"
 
 #ifdef _DEBUG
 #include "imgui.h"
@@ -46,38 +48,73 @@ bool Eater::DrawCustomImGui()
 
     constexpr float kMinBpm = 1.f;
     constexpr float kMaxBpm = 1200.f;   // interval_ の ClampMin 0.05 秒
-    float bpm = interval_ > 0.f ? 60.f / interval_ : kMinBpm;
-    if (ImGui::DragFloat("BPM", &bpm, 0.5f, kMinBpm, kMaxBpm, "%.1f"))
-    {
-        SetTempo(60.f / std::clamp(bpm, kMinBpm, kMaxBpm));
-        changed = true;
-    }
-    ImGui::TextDisabled("= %.3f sec / bite", interval_);
+    const float bpm = interval_ > 0.f ? 60.f / interval_ : kMinBpm;
 
-    // よく使う BPM と、半分・倍
+    // 今の BPM（スライド中は毎フレーム変わる）
+    ImGui::Text("Now  %.1f BPM", bpm);
+    ImGui::SameLine();
+    ImGui::TextDisabled("(%.3f sec / bite)", interval_);
+
+    // 目標の BPM とスライドの時間を決めて、Slide で始める
+    ImGui::DragFloat("Target BPM", &debugTargetBpm_, 0.5f, kMinBpm, kMaxBpm, "%.1f");
+    ImGui::DragFloat("Slide Time", &debugSlideTime_, 0.05f, 0.f, 30.f, "%.2f sec");
+    if (ImGui::Button("Slide"))
+    {
+        SetTempoFromBpm(std::clamp(debugTargetBpm_, kMinBpm, kMaxBpm), debugSlideTime_);
+    }
+    ImGui::SameLine();
+    ImGui::TextDisabled("(runs in Play while Active)");
+
+    // よく使う BPM と、今の半分・倍。押すと Slide Time でスライドする
+    const auto slideTo = [&](float target)
+    {
+        debugTargetBpm_ = std::clamp(target, kMinBpm, kMaxBpm);
+        SetTempoFromBpm(debugTargetBpm_, debugSlideTime_);
+    };
     constexpr float kPresets[] = { 60.f, 90.f, 120.f, 150.f, 180.f };
     for (size_t i = 0; i < std::size(kPresets); ++i)
     {
         if (i > 0) ImGui::SameLine();
         char label[16];
         std::snprintf(label, sizeof(label), "%.0f", kPresets[i]);
-        if (ImGui::Button(label))
-        {
-            SetTempo(60.f / kPresets[i]);
-            changed = true;
-        }
+        if (ImGui::Button(label)) slideTo(kPresets[i]);
     }
-    if (ImGui::Button("x0.5"))
-    {
-        SetTempo(60.f / std::clamp(bpm * 0.5f, kMinBpm, kMaxBpm));
-        changed = true;
-    }
+    if (ImGui::Button("x0.5")) slideTo(bpm * 0.5f);
     ImGui::SameLine();
-    if (ImGui::Button("x2"))
+    if (ImGui::Button("x2")) slideTo(bpm * 2.f);
+
+    // スライドの状態：始め → 目標 と、進み具合
+    if (slideTarget_ && slideFrom_ > 0.f && *slideTarget_ > 0.f)
     {
-        SetTempo(60.f / std::clamp(bpm * 2.f, kMinBpm, kMaxBpm));
-        changed = true;
+        const float slideProgress = slideTime_ > 0.f ? std::clamp(slideElapsed_ / slideTime_, 0.f, 1.f) : 1.f;
+        char overlay[64];
+        std::snprintf(overlay, sizeof(overlay), "%.1f -> %.1f  (%.2f / %.2f sec)",
+                      60.f / slideFrom_, 60.f / *slideTarget_, slideElapsed_, slideTime_);
+        ImGui::TextColored(kGood, "SLIDING");
+        ImGui::SameLine();
+        ImGui::ProgressBar(slideProgress, { -1.f, 0.f }, overlay);
     }
+    else
+    {
+        ImGui::TextColored(kDim, "STEADY");
+    }
+
+    // BPM の移り変わり。イージングのカーブがそのまま見える
+    if (debugBpmHistory_[debugBpmHistoryHead_] <= 0.f)
+    {
+        // 最初の表示では、今の BPM で埋めておく（0 からの線が出ないように）
+        debugBpmHistory_.fill(bpm);
+    }
+    debugBpmHistory_[debugBpmHistoryHead_] = bpm;
+    debugBpmHistoryHead_ = (debugBpmHistoryHead_ + 1) % debugBpmHistory_.size();
+    const auto [minIt, maxIt] = std::minmax_element(debugBpmHistory_.begin(), debugBpmHistory_.end());
+    const float graphMin = *minIt - 5.f;
+    const float graphMax = *maxIt + 5.f;
+    char graphLabel[32];
+    std::snprintf(graphLabel, sizeof(graphLabel), "%.0f - %.0f", *minIt, *maxIt);
+    ImGui::PlotLines("##bpmHistory", debugBpmHistory_.data(), static_cast<int>(debugBpmHistory_.size()),
+                     static_cast<int>(debugBpmHistoryHead_), graphLabel, graphMin, graphMax,
+                     { -1.f, ImGui::GetFrameHeight() * 3.f });
 
     // 拍：ランプは拍の直後に明るく、次の拍へ向けて暗くなる。バーは次の拍までの進み
     const float progress = interval_ > 0.f ? std::clamp(elapsed_ / interval_, 0.f, 1.f) : 0.f;
@@ -106,6 +143,8 @@ void Eater::Tick([[maybe_unused]] float deltaTime)
 {
     if (!active_) return;
 
+    SlideTempo(deltaTime);
+
     elapsed_ += deltaTime;
 
     while (interval_ <= elapsed_)
@@ -117,17 +156,20 @@ void Eater::Tick([[maybe_unused]] float deltaTime)
     Eat();
 }
 
-void Eater::SetTempo(float sec)
+void Eater::SetTempo(float sec, float time) 
 {
-    interval_ = sec;
+    slideFrom_ = interval_;
+    slideElapsed_ = 0.f;
+    slideTarget_ = sec;
+    slideTime_ = time;
 }
 
-void Eater::SetTempoFromBpm(float bpm)
+void Eater::SetTempoFromBpm(float bpm, float time)
 {
-    SetTempo(60.f / bpm);
+    SetTempo(60.f / bpm, time);
 }
 
-void Eater::Eat()
+void Eater::Eat() 
 {
     if(pends_ <= 0.f) return;
 
@@ -140,4 +182,30 @@ void Eater::Eat()
     gauge->Charge(taken * percentMul);
 
     pends_ = 0.f;
+
+    if(auto audio = GetOwner()->GetComponent<Tako::AudioSourceComponent>())
+    {
+        audio->Play();
+    }
+}
+
+void Eater::SlideTempo(float deltaTime) 
+{
+    if (!slideTarget_)return;
+
+    slideElapsed_ += deltaTime;
+
+    const float t = std::clamp(slideElapsed_ / slideTime_, 0.f, 1.f);
+
+    const float fromBpm = 60.f / slideFrom_;
+    const float destBpm = 60.f / *slideTarget_;
+    const float bpm = Tako::Vec3::Lerp(fromBpm, destBpm, Tako::Ease::InOutSine(t));
+
+    interval_ = 60.f / bpm;
+
+    if (1.f <= t)
+    {
+        interval_ = *slideTarget_;
+        slideTarget_.reset();
+    }
 }
