@@ -24,6 +24,7 @@
     </ClCompile>
     <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
     <ClCompile Include="Script\system\TimeLimit.cpp" />
+    <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Script">
@@ -77,5 +78,6 @@
       <Filter>Source\system</Filter>
     </ClInclude>
     <ClInclude Include="Script\system\TimeLimit.h" />
+    <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h" />
   </ItemGroup>
 </Project>
