@@ -13,6 +13,9 @@
     <ClCompile Include="Script\system\EventDispatcher.cpp">
       <Filter>Script\system</Filter>
     </ClCompile>
+    <ClCompile Include="Script\system\TimeLimit.cpp">
+      <Filter>Script\system</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Director\Lane.cpp">
       <Filter>Source\Director</Filter>
     </ClCompile>
@@ -22,9 +25,9 @@
     <ClCompile Include="Source\system\EventSubscription.cpp">
       <Filter>Source\system</Filter>
     </ClCompile>
-    <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
-    <ClCompile Include="Script\system\TimeLimit.cpp" />
-    <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp" />
+    <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp">
+      <Filter>Source\utility\imgui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Script">
@@ -51,8 +54,14 @@
     <Filter Include="Source\system">
       <UniqueIdentifier>{6f30a1d3-d7fe-4c39-add8-eaf14bfba1e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\utility">
+      <UniqueIdentifier>{ffcc5f3c-9e40-4cbb-ac3c-b59dc71b4a5c}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Script\HUD\SatisfactionGauge">
       <UniqueIdentifier>{c3a94dd3-09fc-4d56-b3dc-ec78e326c3a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\utility\imgui">
+      <UniqueIdentifier>{d9b4b6fa-9590-4b08-b55e-37e36c4f09c1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +77,9 @@
     <ClInclude Include="Script\system\EventDispatcher.h">
       <Filter>Script\system</Filter>
     </ClInclude>
+    <ClInclude Include="Script\system\TimeLimit.h">
+      <Filter>Script\system</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Director\Lane.h">
       <Filter>Source\Director</Filter>
     </ClInclude>
@@ -77,7 +89,8 @@
     <ClInclude Include="Source\system\EventSubscription.h">
       <Filter>Source\system</Filter>
     </ClInclude>
-    <ClInclude Include="Script\system\TimeLimit.h" />
-    <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h" />
+    <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h">
+      <Filter>Source\utility\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
