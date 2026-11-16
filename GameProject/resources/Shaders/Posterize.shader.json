@@ -1,0 +1,18 @@
+{
+    "Defaults": {
+        "iLevel": 0.0
+    },
+    "Name": "Posterize",
+    "PostEffect": {
+        "Fade": [
+            "iLevel"
+        ],
+        "PS": "resources/Shaders/Posterize.PS.hlsl"
+    },
+    "Properties": {
+        "iLevel": [
+            0.009999999776482582,
+            255.0
+        ]
+    }
+}
