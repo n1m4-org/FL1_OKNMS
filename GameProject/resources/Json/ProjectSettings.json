@@ -32,7 +32,6 @@
             0.17000000178813934,
             1.0
         ],
-        "MaxShadowDistance": 50.0,
         "PCFKernelSize": 3,
         "RenderScale": 1.0,
         "ShadowBias": 9.999999747378752e-05,

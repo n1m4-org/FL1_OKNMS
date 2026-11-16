@@ -22,6 +22,8 @@
     <ClCompile Include="Source\system\EventSubscription.cpp">
       <Filter>Source\system</Filter>
     </ClCompile>
+    <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
+    <ClCompile Include="Script\system\TimeLimit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Script">
@@ -74,5 +76,6 @@
     <ClInclude Include="Source\system\EventSubscription.h">
       <Filter>Source\system</Filter>
     </ClInclude>
+    <ClInclude Include="Script\system\TimeLimit.h" />
   </ItemGroup>
 </Project>
