@@ -22,7 +22,8 @@ class Eater : public Tako::Script {
     TPROPERTY(Edit, ClampMin = 0, Speed = 0.1)
     float amount_ = 1.f;
 
-    TPROPERTY(Edit, ClampMin = 1, Speed = 0.1)
+    // ClampMin 0.05 秒 = BPM 1200 まで
+    TPROPERTY(Edit, ClampMin = 0.05, Speed = 0.01, Tooltip = "1 口の間隔（秒）。60 / BPM")
     float interval_ = 1.f;
 
     TPROPERTY(Edit, Speed = 0.1)
@@ -40,6 +41,9 @@ public: //メンバー関数
 #endif
 
     void Tick(float deltaTime) override;
+
+    void SetTempo(float sec);
+    void SetTempoFromBpm(float bpm);
 
 private:
     void Eat();

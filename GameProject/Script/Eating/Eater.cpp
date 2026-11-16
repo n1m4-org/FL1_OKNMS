@@ -8,6 +8,10 @@
 #ifdef _DEBUG
 #include "imgui.h"
 
+#include <algorithm>
+#include <cstdio>
+#include <iterator>
+
 bool Eater::DrawCustomImGui()
 {
     // 保存する値（TPROPERTY）を変えたら true を返す
@@ -37,6 +41,63 @@ bool Eater::DrawCustomImGui()
     ImGui::TextColored(hasGauge ? kGood : kBad, hasGauge ? "Gauge : OK" : "Gauge : missing");
     ImGui::Text("Pending : %.2f", pends_);
 
+    // ---- テンポ ----
+    ImGui::SeparatorText("Tempo");
+
+    constexpr float kMinBpm = 1.f;
+    constexpr float kMaxBpm = 1200.f;   // interval_ の ClampMin 0.05 秒
+    float bpm = interval_ > 0.f ? 60.f / interval_ : kMinBpm;
+    if (ImGui::DragFloat("BPM", &bpm, 0.5f, kMinBpm, kMaxBpm, "%.1f"))
+    {
+        SetTempo(60.f / std::clamp(bpm, kMinBpm, kMaxBpm));
+        changed = true;
+    }
+    ImGui::TextDisabled("= %.3f sec / bite", interval_);
+
+    // よく使う BPM と、半分・倍
+    constexpr float kPresets[] = { 60.f, 90.f, 120.f, 150.f, 180.f };
+    for (size_t i = 0; i < std::size(kPresets); ++i)
+    {
+        if (i > 0) ImGui::SameLine();
+        char label[16];
+        std::snprintf(label, sizeof(label), "%.0f", kPresets[i]);
+        if (ImGui::Button(label))
+        {
+            SetTempo(60.f / kPresets[i]);
+            changed = true;
+        }
+    }
+    if (ImGui::Button("x0.5"))
+    {
+        SetTempo(60.f / std::clamp(bpm * 0.5f, kMinBpm, kMaxBpm));
+        changed = true;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("x2"))
+    {
+        SetTempo(60.f / std::clamp(bpm * 2.f, kMinBpm, kMaxBpm));
+        changed = true;
+    }
+
+    // 拍：ランプは拍の直後に明るく、次の拍へ向けて暗くなる。バーは次の拍までの進み
+    const float progress = interval_ > 0.f ? std::clamp(elapsed_ / interval_, 0.f, 1.f) : 0.f;
+    const float lamp     = active_ ? 1.f - progress : 0.f;
+    const float radius   = ImGui::GetFrameHeight() * 0.5f;
+    const ImVec2 pos     = ImGui::GetCursorScreenPos();
+    ImGui::GetWindowDrawList()->AddCircleFilled(
+        { pos.x + radius, pos.y + radius }, radius * 0.8f,
+        ImGui::GetColorU32(ImVec4(1.f, 0.6f, 0.2f, 0.15f + 0.85f * lamp)));
+    ImGui::Dummy({ radius * 2.f, radius * 2.f });
+    ImGui::SameLine();
+    ImGui::ProgressBar(progress, { -1.f, radius * 2.f }, "");
+
+    // ---- 1 口 ----
+    ImGui::SeparatorText("Bite");
+    const float gaugePerBite = amount_ * percentMul;
+    ImGui::Text("Plate  -%.2f / bite", amount_);
+    ImGui::Text("Gauge  +%.2f%% / bite", gaugePerBite);
+    ImGui::Text("Gauge  +%.2f%% / sec", interval_ > 0.f ? gaugePerBite / interval_ : 0.f);
+
     return changed;
 }
 #endif
@@ -54,6 +115,16 @@ void Eater::Tick([[maybe_unused]] float deltaTime)
     }
 
     Eat();
+}
+
+void Eater::SetTempo(float sec)
+{
+    interval_ = sec;
+}
+
+void Eater::SetTempoFromBpm(float bpm)
+{
+    SetTempo(60.f / bpm);
 }
 
 void Eater::Eat()
