@@ -102,10 +102,10 @@
               "CastShadow": false,
               "Values": {
                 "color": [
-                  0.3,
-                  0.3,
-                  0.3,
-                  1.0
+                  0.6614786,
+                  0.6614786,
+                  0.6614786,
+                  0.0
                 ],
                 "enableLighting": 0
               }
@@ -163,6 +163,36 @@
                 0.0,
                 0.0
               ]
+            },
+            "renderSettings": {
+              "Meshes": {
+                "plane_0": {
+                  "Textures": {
+                    "gTexture": "sample/bar_low.png"
+                  },
+                  "Values": {
+                    "shininess": 64.0,
+                    "uvTransform": [
+                      10.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      10.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  }
+                }
+              }
             },
             "visible": true
           },
@@ -269,7 +299,10 @@
         "Script": {
           "order": 1,
           "properties": {
-            "script": "TimeLimit"
+            "maxLimitTime": 60.0,
+            "remainingTime": 0.0,
+            "script": "TimeLimit",
+            "state": "Ready"
           },
           "type": "ScriptComponent"
         },
@@ -287,6 +320,70 @@
       "properties": {
         "active": true,
         "name": "TimeLimit",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "UILayoutComponent": {
+          "order": 0,
+          "properties": {
+            "layout": "dbg_measure",
+            "sortingOrder": 0,
+            "visible": true
+          },
+          "type": "UILayoutComponent"
+        }
+      },
+      "id": 8,
+      "properties": {
+        "active": true,
+        "name": "UI Layout",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {},
+      "id": 9,
+      "properties": {
+        "active": true,
+        "name": "Actor",
         "tags": [],
         "transform": {
           "rotate": [

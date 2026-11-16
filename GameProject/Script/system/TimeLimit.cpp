@@ -71,6 +71,12 @@ void TimeLimit::Reset()
     isDirty_ = true;
 }
 
+void TimeLimit::AddRemainingTime(float time)
+{
+    remainingTime_ += time;
+    isDirty_ = true;
+}
+
 void TimeLimit::DecreaseTime(float time)
 {
     remainingTime_ -= time;
