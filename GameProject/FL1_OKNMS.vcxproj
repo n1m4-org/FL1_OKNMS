@@ -45,8 +45,12 @@
   <!-- Debug の出力名（Game.dll）はエンジンの props が決める -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>4304_Title</TargetName>
+    <IncludePath>$(ProjectDir)Source;$(ProjectDir)Script;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <!-- Windows.h の min / max マクロを止める（std::min / std::max を使うため） -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)Source;$(ProjectDir)Script;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -64,9 +68,11 @@
     <ClCompile Include="Script\Entity\Kamisama.cpp" />
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
     <ClCompile Include="Script\system\EventDispatcher.cpp" />
+    <ClCompile Include="Script\system\TimeLimit.cpp" />
     <ClCompile Include="Source\Director\Lane.cpp" />
     <ClCompile Include="Source\system\EventListener.cpp" />
     <ClCompile Include="Source\system\EventSubscription.cpp" />
+    <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\Eating\Plate.h" />
@@ -75,9 +81,11 @@
     <ClInclude Include="Script\Entity\Kamisama.h" />
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />
     <ClInclude Include="Script\system\EventDispatcher.h" />
+    <ClInclude Include="Script\system\TimeLimit.h" />
     <ClInclude Include="Source\Director\Lane.h" />
     <ClInclude Include="Source\system\EventListener.h" />
     <ClInclude Include="Source\system\EventSubscription.h" />
+    <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h" />
   </ItemGroup>
   <!-- エンジンが無い（clone した直後など）と設定ファイルを読めないので、ビルドの最初に、やることを伝えて止める。
        Visual Studio が裏で行う設計時ビルドでは出さない（プロジェクトを開いただけでエラーが並ばないように） -->
