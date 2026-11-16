@@ -12,7 +12,9 @@ public:
     enum class State { Ready, Running, Paused };
 
     void Tick(float deltaTime) override;
+#ifdef _DEBUG
     bool DrawCustomImGui() override;
+#endif // _DEBUG
 
     /// カウントダウンの操作
     void Start();

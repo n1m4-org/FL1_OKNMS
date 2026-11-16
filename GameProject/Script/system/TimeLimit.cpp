@@ -33,9 +33,9 @@ void TimeLimit::Tick(float deltaTime)
     if (isDirty_) UpdateText();
 }
 
+#ifdef _DEBUG
 bool TimeLimit::DrawCustomImGui()
 {
-#ifdef _DEBUG
     ImGui::Text("Dirty : "); ImGui::SameLine();
     if (isDirty_) ImGui::TextRed("true");
     else ImGui::TextGreen("false");
@@ -51,8 +51,8 @@ bool TimeLimit::DrawCustomImGui()
     else if (reset) Reset();
 
     return false;
-#endif // _DEBUG
 }
+#endif // _DEBUG
 
 void TimeLimit::Start()
 {
