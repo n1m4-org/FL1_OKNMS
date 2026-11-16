@@ -163,7 +163,7 @@ void SatisfactionGauge::Decay()
 
 void SatisfactionGauge::Change(float value)
 {
-    percentage_ -= value;
+    percentage_ += value;
     percentage_ = std::clamp(percentage_, 0.f, 100.f);
 	isRingDirty_ = true;
 }

@@ -58,6 +58,8 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Script\Eating\Plate.cpp" />
+    <ClCompile Include="Script\Eating\Eater.cpp" />
     <ClCompile Include="Script\Director\KamisamaDirector.cpp" />
     <ClCompile Include="Script\Entity\Kamisama.cpp" />
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
@@ -67,6 +69,8 @@
     <ClCompile Include="Source\system\EventSubscription.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Script\Eating\Plate.h" />
+    <ClInclude Include="Script\Eating\Eater.h" />
     <ClInclude Include="Script\Director\KamisamaDirector.h" />
     <ClInclude Include="Script\Entity\Kamisama.h" />
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />
