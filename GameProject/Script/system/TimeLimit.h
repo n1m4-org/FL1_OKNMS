@@ -2,6 +2,10 @@
 
 #include <Script.h>
 
+/// 制限時間クラス
+/// ゲームの制限時間をカウントするクラス
+/// 時間が０になったら行う処理は別のクラスが担当する
+
 TCLASS()
 class TimeLimit : public Tako::Script
 {
