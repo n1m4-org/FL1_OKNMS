@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Script.h>
-#include <score\Score.h>
+#include <system/score/Score.h>
 
 TCLASS()
 class ScoreView : public Tako::Script

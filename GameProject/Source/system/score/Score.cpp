@@ -21,3 +21,9 @@ Score& Score::operator+=(uint32_t value)
     value_ += value;
     return *this;
 }
+
+Score& Score::operator-=(uint32_t value)
+{
+    value_ -= value;
+    return *this;
+}

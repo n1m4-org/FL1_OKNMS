@@ -10,7 +10,7 @@ public:
     Score(const uint32_t& v) : value_(v) {}
 
     Score& operator +=(uint32_t value);
-    Score& operator -=(uint32_t value) = delete;
+    Score& operator -=(uint32_t value);
     Score operator +(uint32_t value) const;
     Score operator -(uint32_t value) const;
     Score& operator =(uint32_t value) = delete;

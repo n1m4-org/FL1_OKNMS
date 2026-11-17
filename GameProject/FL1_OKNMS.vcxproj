@@ -66,10 +66,11 @@
     <ClCompile Include="Script\Entity\Kamisama.cpp" />
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
     <ClCompile Include="Script\system\EventDispatcher.cpp" />
+    <ClCompile Include="Script\system\score\ScoreManager.cpp" />
     <ClCompile Include="Script\system\score\ScoreView.cpp" />
     <ClCompile Include="Script\system\TimeLimit.cpp" />
     <ClCompile Include="Source\Director\Lane.cpp" />
-    <ClCompile Include="Source\score\Score.cpp" />
+    <ClCompile Include="Source\system\score\Score.cpp" />
     <ClCompile Include="Source\system\EventListener.cpp" />
     <ClCompile Include="Source\system\EventSubscription.cpp" />
     <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp" />
@@ -83,7 +84,7 @@
     <ClInclude Include="Script\system\score\ScoreView.h" />
     <ClInclude Include="Script\system\TimeLimit.h" />
     <ClInclude Include="Source\Director\Lane.h" />
-    <ClInclude Include="Source\score\Score.h" />
+    <ClInclude Include="Source\system\score\Score.h" />
     <ClInclude Include="Source\system\EventListener.h" />
     <ClInclude Include="Source\system\EventSubscription.h" />
     <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h" />
