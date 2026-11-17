@@ -13,6 +13,9 @@
     <ClCompile Include="Script\system\EventDispatcher.cpp">
       <Filter>Script\system</Filter>
     </ClCompile>
+    <ClCompile Include="Script\system\score\ScoreView.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
     <ClCompile Include="Script\system\TimeLimit.cpp">
       <Filter>Script\system</Filter>
     </ClCompile>
@@ -87,6 +90,9 @@
       <Filter>Script\system</Filter>
     </ClInclude>
     <ClInclude Include="Script\system\score\ScoreManager.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\ScoreView.h">
       <Filter>Script\system\score</Filter>
     </ClInclude>
     <ClInclude Include="Script\system\TimeLimit.h">
