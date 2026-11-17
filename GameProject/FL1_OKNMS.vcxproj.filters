@@ -13,6 +13,9 @@
     <ClCompile Include="Script\system\EventDispatcher.cpp">
       <Filter>Script\system</Filter>
     </ClCompile>
+    <ClCompile Include="Script\system\score\ScoreManager.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
     <ClCompile Include="Script\system\score\ScoreView.cpp">
       <Filter>Script\system\score</Filter>
     </ClCompile>
@@ -22,8 +25,8 @@
     <ClCompile Include="Source\Director\Lane.cpp">
       <Filter>Source\Director</Filter>
     </ClCompile>
-    <ClCompile Include="Source\score\Score.cpp">
-      <Filter>Source\score</Filter>
+    <ClCompile Include="Source\system\score\Score.cpp">
+      <Filter>Source\system\score</Filter>
     </ClCompile>
     <ClCompile Include="Source\system\EventListener.cpp">
       <Filter>Source\system</Filter>
@@ -57,9 +60,6 @@
     <Filter Include="Source\Director">
       <UniqueIdentifier>{124639ea-130f-4d50-897c-5873ed7cf83b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\score">
-      <UniqueIdentifier>{6c79c2c4-5731-4d75-bdcf-1bea5c8dce5e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\system">
       <UniqueIdentifier>{6f30a1d3-d7fe-4c39-add8-eaf14bfba1e4}</UniqueIdentifier>
     </Filter>
@@ -71,6 +71,9 @@
     </Filter>
     <Filter Include="Script\system\score">
       <UniqueIdentifier>{7944449f-7bbb-4074-9ae7-0f0ae52bded0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\system\score">
+      <UniqueIdentifier>{d2f1cba3-0bbc-4b6e-8b4d-bb083d46e636}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\utility\imgui">
       <UniqueIdentifier>{d9b4b6fa-9590-4b08-b55e-37e36c4f09c1}</UniqueIdentifier>
@@ -101,8 +104,8 @@
     <ClInclude Include="Source\Director\Lane.h">
       <Filter>Source\Director</Filter>
     </ClInclude>
-    <ClInclude Include="Source\score\Score.h">
-      <Filter>Source\score</Filter>
+    <ClInclude Include="Source\system\score\Score.h">
+      <Filter>Source\system\score</Filter>
     </ClInclude>
     <ClInclude Include="Source\system\EventListener.h">
       <Filter>Source\system</Filter>
