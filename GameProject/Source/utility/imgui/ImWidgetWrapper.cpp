@@ -4,7 +4,7 @@
 
 #ifdef _DEBUG
 
-bool ImGui::ButtonColored(const char* label, Tako::ColorHSV col, ImVec2 size)
+bool ImGui::ButtonColored(const char* label, Tako::ColorHSV col, const ImVec2& size)
 {
     Tako::Color rgba = {};
     Tako::ColorHSV hsv = {};

@@ -7,7 +7,7 @@
 
 namespace ImGui
 {
-    bool ButtonColored(const char* label, Tako::ColorHSV col, ImVec2 size);
+    bool ButtonColored(const char* label, Tako::ColorHSV col, const ImVec2& size = ImVec2(0, 0));
     void TextRed(const char* fmt, ...);
     void TextGreen(const char* fmt, ...);
     void TextBlue(const char* fmt, ...);
