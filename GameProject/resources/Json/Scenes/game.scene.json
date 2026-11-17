@@ -384,6 +384,44 @@
         }
       },
       "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "ScoreManager",
+            "viewActor": {
+              "actor": 9
+            }
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 10,
+      "properties": {
+        "active": true,
+        "name": "ScoreManager",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
     }
   ]
 }
