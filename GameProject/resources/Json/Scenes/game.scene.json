@@ -102,10 +102,10 @@
               "CastShadow": false,
               "Values": {
                 "color": [
-                  0.6614786,
-                  0.6614786,
-                  0.6614786,
-                  0.0
+                  0.6627451,
+                  0.6627451,
+                  0.6627451,
+                  1.0
                 ],
                 "enableLighting": 0
               }
@@ -168,10 +168,9 @@
               "Meshes": {
                 "plane_0": {
                   "Textures": {
-                    "gTexture": "sample/bar_low.png"
+                    "gTexture": "sample/Brick_Red.png"
                   },
                   "Values": {
-                    "shininess": 64.0,
                     "uvTransform": [
                       10.0,
                       0.0,
@@ -343,47 +342,28 @@
     },
     {
       "components": {
-        "UILayoutComponent": {
+        "Script": {
           "order": 0,
           "properties": {
-            "layout": "dbg_measure",
+            "script": "ScoreView",
+            "smoothDurationMs": 3.0
+          },
+          "type": "ScriptComponent"
+        },
+        "UILayoutComponent": {
+          "order": 1,
+          "properties": {
+            "layout": "UIScoreView",
             "sortingOrder": 0,
             "visible": true
           },
           "type": "UILayoutComponent"
         }
       },
-      "id": 8,
-      "properties": {
-        "active": true,
-        "name": "UI Layout",
-        "tags": [],
-        "transform": {
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "translate": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "type": "Actor"
-    },
-    {
-      "components": {},
       "id": 9,
       "properties": {
         "active": true,
-        "name": "Actor",
+        "name": "ScoreView",
         "tags": [],
         "transform": {
           "rotate": [
