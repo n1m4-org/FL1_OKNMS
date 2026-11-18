@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Script.h>
-#include <system/score/Score.h>
+#include <type/Score.h>
 #include <ActorRef.h>
 
 TCLASS()

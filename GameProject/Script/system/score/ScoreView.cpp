@@ -45,7 +45,7 @@ void ScoreView::ApplyScore(Score score)
 {
     updatedTiming_ = now;
     scoreDisplayedLast_ = scoreDisplayed_;
-    scoreTarget_ = score.Get();
+    scoreTarget_ = score;
 }
 
 void ScoreView::UpdateDisplayScore(float deltaTime)
