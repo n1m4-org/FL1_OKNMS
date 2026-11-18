@@ -17,4 +17,16 @@ bool PointTable::DrawCustomImGui()
 
     return add;
 }
+
+std::optional<Score> PointTable::Get(PointAction action)
+{
+    auto it = std::ranges::find(points_, action, &PointEntry::action);
+    if (it != points_.end())
+    {
+        return it->score;
+    }
+    
+    return std::nullopt;
+}
+
 #endif // _DEBUG
