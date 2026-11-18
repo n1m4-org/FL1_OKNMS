@@ -13,6 +13,9 @@
     <ClCompile Include="Script\system\EventDispatcher.cpp">
       <Filter>Script\system</Filter>
     </ClCompile>
+    <ClCompile Include="Script\system\score\HighScoreTable.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
     <ClCompile Include="Script\system\score\ScoreManager.cpp">
       <Filter>Script\system\score</Filter>
     </ClCompile>
@@ -34,8 +37,6 @@
     <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp">
       <Filter>Source\utility\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
-    <ClCompile Include="Script\system\score\HighScoreTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Script">
@@ -62,6 +63,9 @@
     <Filter Include="Source\system">
       <UniqueIdentifier>{6f30a1d3-d7fe-4c39-add8-eaf14bfba1e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\type">
+      <UniqueIdentifier>{4ed98f39-d3d0-47ed-882d-2ca1f5d8be24}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source\utility">
       <UniqueIdentifier>{ffcc5f3c-9e40-4cbb-ac3c-b59dc71b4a5c}</UniqueIdentifier>
     </Filter>
@@ -70,9 +74,6 @@
     </Filter>
     <Filter Include="Script\system\score">
       <UniqueIdentifier>{7944449f-7bbb-4074-9ae7-0f0ae52bded0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\system\score">
-      <UniqueIdentifier>{d2f1cba3-0bbc-4b6e-8b4d-bb083d46e636}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\utility\imgui">
       <UniqueIdentifier>{d9b4b6fa-9590-4b08-b55e-37e36c4f09c1}</UniqueIdentifier>
@@ -90,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="Script\system\EventDispatcher.h">
       <Filter>Script\system</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\HighScoreTable.h">
+      <Filter>Script\system\score</Filter>
     </ClInclude>
     <ClInclude Include="Script\system\score\ScoreManager.h">
       <Filter>Script\system\score</Filter>
@@ -109,10 +113,11 @@
     <ClInclude Include="Source\system\EventSubscription.h">
       <Filter>Source\system</Filter>
     </ClInclude>
+    <ClInclude Include="Source\type\Score.h">
+      <Filter>Source\type</Filter>
+    </ClInclude>
     <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h">
       <Filter>Source\utility\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Script\system\score\HighScoreTable.h" />
-    <ClInclude Include="Source\type\Score.h" />
   </ItemGroup>
 </Project>
