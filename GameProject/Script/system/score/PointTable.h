@@ -23,7 +23,9 @@ class PointTable : public Tako::Script
     GENERATED_BODY()
 
 public:
+#ifdef _DEBUG
     bool DrawCustomImGui() override;
+#endif // _DEBUG
 
 private:
     TPROPERTY(Edit, Tooltip = "ポイントテーブルのエントリ")
