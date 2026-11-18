@@ -53,6 +53,7 @@ HighScoreTable::SubmitResult HighScoreTable::Submit(const std::string& name, con
 
 const ScoreEntry& HighScoreTable::GetBestEntry() const
 {
-    if (entries_.empty()) return ScoreEntry("Invalid Score", 0u, {});
+    static ScoreEntry kInvalidEntry = { "Invalid Score", 0u, {} };
+    if (entries_.empty()) return kInvalidEntry;
     return entries_.front();
 }

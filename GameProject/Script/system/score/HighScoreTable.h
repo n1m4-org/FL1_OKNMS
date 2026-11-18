@@ -10,6 +10,7 @@
 TSTRUCT()
 struct ScoreEntry
 {
+    GENERATED_STRUCT_BODY()
     std::string name;
     Score score;
     std::chrono::system_clock::time_point timestamp;

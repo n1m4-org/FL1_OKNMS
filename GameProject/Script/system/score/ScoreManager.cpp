@@ -40,7 +40,7 @@ void ScoreManager::SubtractScore(uint32_t value)
 {
     if (value == 0) return;
 
-    score_ -= std::min(value, score_.Get());
+    score_ -= std::min(value, score_);
     ApplyToView();
 }
 
