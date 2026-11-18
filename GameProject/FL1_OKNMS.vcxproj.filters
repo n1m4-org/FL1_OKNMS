@@ -25,9 +25,6 @@
     <ClCompile Include="Source\Director\Lane.cpp">
       <Filter>Source\Director</Filter>
     </ClCompile>
-    <ClCompile Include="Source\system\score\Score.cpp">
-      <Filter>Source\system\score</Filter>
-    </ClCompile>
     <ClCompile Include="Source\system\EventListener.cpp">
       <Filter>Source\system</Filter>
     </ClCompile>
@@ -37,6 +34,8 @@
     <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp">
       <Filter>Source\utility\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
+    <ClCompile Include="Script\system\score\HighScoreTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Script">
@@ -104,9 +103,6 @@
     <ClInclude Include="Source\Director\Lane.h">
       <Filter>Source\Director</Filter>
     </ClInclude>
-    <ClInclude Include="Source\system\score\Score.h">
-      <Filter>Source\system\score</Filter>
-    </ClInclude>
     <ClInclude Include="Source\system\EventListener.h">
       <Filter>Source\system</Filter>
     </ClInclude>
@@ -116,5 +112,7 @@
     <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h">
       <Filter>Source\utility\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="Script\system\score\HighScoreTable.h" />
+    <ClInclude Include="Source\type\Score.h" />
   </ItemGroup>
 </Project>
