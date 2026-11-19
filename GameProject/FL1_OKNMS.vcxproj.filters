@@ -16,6 +16,9 @@
     <ClCompile Include="Script\system\score\HighScoreTable.cpp">
       <Filter>Script\system\score</Filter>
     </ClCompile>
+    <ClCompile Include="Script\system\score\PointTable.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
     <ClCompile Include="Script\system\score\ScoreManager.cpp">
       <Filter>Script\system\score</Filter>
     </ClCompile>
@@ -93,6 +96,12 @@
       <Filter>Script\system</Filter>
     </ClInclude>
     <ClInclude Include="Script\system\score\HighScoreTable.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\PointAction.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\PointTable.h">
       <Filter>Script\system\score</Filter>
     </ClInclude>
     <ClInclude Include="Script\system\score\ScoreManager.h">
