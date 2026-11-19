@@ -67,6 +67,7 @@
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
     <ClCompile Include="Script\system\EventDispatcher.cpp" />
     <ClCompile Include="Script\system\score\HighScoreTable.cpp" />
+    <ClCompile Include="Script\system\score\PointTable.cpp" />
     <ClCompile Include="Script\system\score\ScoreManager.cpp" />
     <ClCompile Include="Script\system\score\ScoreView.cpp" />
     <ClCompile Include="Script\system\TimeLimit.cpp" />
@@ -81,6 +82,8 @@
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />
     <ClInclude Include="Script\system\EventDispatcher.h" />
     <ClInclude Include="Script\system\score\HighScoreTable.h" />
+    <ClInclude Include="Script\system\score\PointAction.h" />
+    <ClInclude Include="Script\system\score\PointTable.h" />
     <ClInclude Include="Script\system\score\ScoreManager.h" />
     <ClInclude Include="Script\system\score\ScoreView.h" />
     <ClInclude Include="Script\system\TimeLimit.h" />
