@@ -22,7 +22,7 @@ public:
 private:
     void ApplyToView();
 
-    TPROPERTY(Edit, Required, Tooltip = "スコア表示用のActor")
+    TPROPERTY(Edit, Required, ActorWith = "ScoreView", Tooltip = "スコア表示用のActor")
     Tako::ActorRef viewActor_;
     Score score_ = 0;
 };

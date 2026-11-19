@@ -20,7 +20,7 @@ public:
     /// スコアを適用します。
     /// </summary>
     /// <param name="score">適用するスコア。</param>
-    void ApplyScore(Score score);
+    void Apply(Score score);
 
 private:
     void UpdateDisplayScore(float deltaTime);
