@@ -161,9 +161,9 @@ void SatisfactionGauge::Decay()
     }
 }
 
-void SatisfactionGauge::Apply(float value)
+void SatisfactionGauge::Apply(float delta)
 {
-    percentage_ += value;
+    percentage_ += delta;
     percentage_ = std::clamp(percentage_, 0.f, 100.f);
 	isRingDirty_ = true;
 }
