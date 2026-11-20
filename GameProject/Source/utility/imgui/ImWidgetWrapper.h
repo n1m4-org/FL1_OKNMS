@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 #include <imgui.h>
 
 #include <ColorFunc.h>
@@ -14,4 +14,4 @@ namespace ImGui
     void TextYellow(const char* fmt, ...);
 }
 
-#endif // _DEBUG
+#endif // TAKO_EDITOR

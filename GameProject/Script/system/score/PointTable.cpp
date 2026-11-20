@@ -2,7 +2,7 @@
 
 
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 #include <imgui.h>
 #include <utility/imgui/ImWidgetWrapper.h>
 bool PointTable::DrawCustomImGui()
@@ -29,4 +29,4 @@ std::optional<Score> PointTable::Get(PointAction action)
     return std::nullopt;
 }
 
-#endif // _DEBUG
+#endif // TAKO_EDITOR
