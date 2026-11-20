@@ -139,7 +139,7 @@ bool Eater::DrawCustomImGui()
 }
 #endif
 
-void Eater::Tick([[maybe_unused]] float deltaTime)
+void Eater::Tick(float deltaTime)
 {
     if (!active_) return;
 
