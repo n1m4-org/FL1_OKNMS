@@ -65,9 +65,7 @@ bool SatisfactionGauge::DrawCustomImGui()
 
     if(ImGui::Button("Charge"))
     {
-        isRingDirty_ = true;
-        percentage_ += chargeBuf_;
-        percentage_ = std::clamp(percentage_, 0.f, 100.f);
+        Charge(chargeBuf_);
     }
 
     ImGui::SameLine();
@@ -76,9 +74,7 @@ bool SatisfactionGauge::DrawCustomImGui()
 
     if(ImGui::Button("Reduce"))
     {
-        isRingDirty_ = true;
-        percentage_ -= reduceBuf_;
-        percentage_ = std::clamp(percentage_, 0.f, 100.f);
+        Reduce(reduceBuf_);
     }
 
     ImGui::SameLine();
@@ -112,12 +108,12 @@ bool SatisfactionGauge::DrawCustomImGui()
 
 void SatisfactionGauge::Charge(const float value)
 {
-    percentage_ += value;
+    Apply(value);
 }
 
 void SatisfactionGauge::Reduce(const float value)
 {
-    percentage_ -= value;
+	Apply(-value);
 }
 
 void SatisfactionGauge::SetDecay(const float value, const float interval)
@@ -159,13 +155,17 @@ void SatisfactionGauge::Decay()
 
     if (decayInterval_ <= std::chrono::duration<float>(end - start_).count())
     {
-        isRingDirty_ = true;
-
-        percentage_ -= decay_;
-        percentage_ = std::clamp(percentage_, 0.f, 100.f);
-
+        Apply(-decay_);
+        
         start_ = std::chrono::system_clock::now();
     }
+}
+
+void SatisfactionGauge::Apply(float delta)
+{
+    percentage_ += delta;
+    percentage_ = std::clamp(percentage_, 0.f, 100.f);
+	isRingDirty_ = true;
 }
 
 Tako::MeshComponent* SatisfactionGauge::BackgroundMesh() const
