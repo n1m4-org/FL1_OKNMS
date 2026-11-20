@@ -68,7 +68,7 @@
           ],
           "translate": [
             0.0,
-            4.199999809265137,
+            0.0,
             0.0
           ]
         }
@@ -461,6 +461,88 @@
     },
     {
       "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "ComboView"
+          },
+          "type": "ScriptComponent"
+        },
+        "UILayoutComponent": {
+          "order": 1,
+          "properties": {
+            "layout": "UIComboView",
+            "sortingOrder": 0,
+            "visible": true
+          },
+          "type": "UILayoutComponent"
+        }
+      },
+      "id": 12,
+      "properties": {
+        "active": true,
+        "name": "ComboView",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "ComboManager",
+            "viewActor": {
+              "actor": 12
+            }
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 13,
+      "properties": {
+        "active": true,
+        "name": "ComboManager",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
         "MeshComponent": {
           "order": 0,
           "properties": {
@@ -495,7 +577,7 @@
           "type": "ScriptComponent"
         }
       },
-      "id": 10,
+      "id": 14,
       "properties": {
         "active": true,
         "name": "Plate",
@@ -543,14 +625,14 @@
             "interval": 1.600000023841858,
             "percentMul": 1.0,
             "plate": {
-              "actor": 10
+              "actor": 14
             },
             "script": "Eater"
           },
           "type": "ScriptComponent"
         }
       },
-      "id": 11,
+      "id": 15,
       "properties": {
         "active": true,
         "name": "Eater",

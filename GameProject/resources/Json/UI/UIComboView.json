@@ -1,0 +1,76 @@
+{
+  "elements": [
+    {
+      "anchorMax": [
+        1.0,
+        0.5
+      ],
+      "anchorMin": [
+        1.0,
+        0.5
+      ],
+      "children": [],
+      "color": [
+        0.7081712484359741,
+        0.7717604637145996,
+        1.0,
+        1.0
+      ],
+      "flip": [
+        false,
+        false
+      ],
+      "locked": true,
+      "name": "Combo",
+      "pivot": [
+        1.0,
+        0.5
+      ],
+      "position": [
+        -32.0,
+        -81.99999237060547
+      ],
+      "postEffect": false,
+      "preserveAspect": false,
+      "rotation": 0.0,
+      "size": [
+        300.0,
+        72.0
+      ],
+      "sliceOverride": false,
+      "sliced": false,
+      "text": {
+        "align": [
+          1.0,
+          0.5
+        ],
+        "font": "",
+        "lineSpacing": 1.0,
+        "outlineColor": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "outlineWidth": 4.0,
+        "size": 72.0,
+        "string": "0",
+        "wrap": true
+      },
+      "texture": "",
+      "uvLeftTop": [
+        0.0,
+        0.0
+      ],
+      "uvSize": [
+        0.0,
+        0.0
+      ],
+      "visible": true
+    }
+  ],
+  "referenceResolution": [
+    1920.0,
+    1080.0
+  ]
+}
