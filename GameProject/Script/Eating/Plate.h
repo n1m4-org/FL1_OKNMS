@@ -2,7 +2,7 @@
 #include "Script.h"
 
 /// <summary>
-/// 
+/// レーンごとの皿。賽銭がどれだけ溜まったか、どれくらい取ったのかをここで処理する。
 /// </summary>
 TCLASS()
 class Plate : public Tako::Script {

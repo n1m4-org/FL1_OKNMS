@@ -7,7 +7,8 @@
 #include "ActorRef.h"
 
 /// <summary>
-/// 
+/// かみさまが食べる動作
+/// 指定したテンポで食べる。
 /// </summary>
 TCLASS()
 class Eater : public Tako::Script {
