@@ -78,7 +78,8 @@
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
     <ClCompile Include="Script\system\combo\ComboManager.cpp" />
     <ClCompile Include="Script\system\combo\ComboView.cpp" />
-    <ClCompile Include="Script\system\EventDispatcher.cpp" />
+    <ClCompile Include="Script\system\event\EventDispatcher.cpp" />
+    <ClCompile Include="Script\system\event\TimeIsUp.cpp" />
     <ClCompile Include="Script\system\score\HighScoreTable.cpp" />
     <ClCompile Include="Script\system\score\PointTable.cpp" />
     <ClCompile Include="Script\system\score\ScoreManager.cpp" />
@@ -97,7 +98,8 @@
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />
     <ClInclude Include="Script\system\combo\ComboManager.h" />
     <ClInclude Include="Script\system\combo\ComboView.h" />
-    <ClInclude Include="Script\system\EventDispatcher.h" />
+    <ClInclude Include="Script\system\event\EventDispatcher.h" />
+    <ClInclude Include="Script\system\event\TimeIsUp.h" />
     <ClInclude Include="Script\system\score\HighScoreTable.h" />
     <ClInclude Include="Script\system\score\PointAction.h" />
     <ClInclude Include="Script\system\score\PointTable.h" />

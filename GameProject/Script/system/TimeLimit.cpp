@@ -26,6 +26,7 @@ void TimeLimit::Tick(float deltaTime)
 
         // 残り時間が 0 になったらイベントを発行する
         PublishEventIfFinished();
+
         break;
 
     case State::Ready:
