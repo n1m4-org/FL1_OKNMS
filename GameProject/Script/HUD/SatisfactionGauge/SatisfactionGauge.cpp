@@ -10,7 +10,7 @@
 #include "Camera.h"
 #include "Renderer.h"
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 #include "ImGui.h"
 #endif
 
@@ -55,7 +55,7 @@ void SatisfactionGauge::Tick([[maybe_unused]] float deltaTime)
     }
 }
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 bool SatisfactionGauge::DrawCustomImGui()
 {
     isRingDirty_ |= ImGui::DragFloat2("Radius", &radius_.x, 0.1f, 0.f, radius_.y + 0.1f);

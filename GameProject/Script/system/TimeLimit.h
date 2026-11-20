@@ -19,9 +19,9 @@ public:
     void Tick(float deltaTime) override;
 
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
     bool DrawCustomImGui() override;
-#endif // _DEBUG
+#endif // TAKO_EDITOR
 
 
     /// カウントダウンの操作

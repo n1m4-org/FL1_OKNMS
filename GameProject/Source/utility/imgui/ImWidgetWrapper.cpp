@@ -2,7 +2,7 @@
 #include <cstdarg>
 #include <ColorFunc.h>
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 
 bool ImGui::ButtonColored(const char* label, Tako::ColorHSV col, const ImVec2& size)
 {
@@ -71,4 +71,4 @@ void ImGui::TextYellow(const char* fmt, ...)
     va_end(args);
 }
 
-#endif //_DEBUG
+#endif //TAKO_EDITOR

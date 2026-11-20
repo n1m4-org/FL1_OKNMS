@@ -10,9 +10,9 @@ class ScoreManager : public Tako::Script
     GENERATED_BODY()
 
 public:
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
     bool DrawCustomImGui() override;
-#endif // _DEBUG
+#endif // TAKO_EDITOR
 
     void AddScore(uint32_t value);
     void SubtractScore(uint32_t value);

@@ -13,7 +13,6 @@ void Lane::AttachKamisama(Kamisama* kamisama)
 
     pKamisama_ = kamisama;
 }
-
 void Lane::DetachKamisama()
 {
     pKamisama_ = nullptr;

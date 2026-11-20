@@ -10,6 +10,7 @@ jobs:
       matrix:
         configuration:
           - Debug
+          - Develop
           - Release
     
     runs-on: self-hosted
