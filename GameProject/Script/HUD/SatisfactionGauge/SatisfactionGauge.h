@@ -93,7 +93,7 @@ public:
 private:
     void RebuildRings();
     void Decay();
-	void Change(float value);
+	void Apply(float value);
 
     Tako::MeshComponent* BackgroundMesh() const;
 };

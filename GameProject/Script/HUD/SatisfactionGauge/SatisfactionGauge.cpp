@@ -108,12 +108,12 @@ bool SatisfactionGauge::DrawCustomImGui()
 
 void SatisfactionGauge::Charge(const float value)
 {
-    Change(value);
+    Apply(value);
 }
 
 void SatisfactionGauge::Reduce(const float value)
 {
-	Change(-value);
+	Apply(-value);
 }
 
 void SatisfactionGauge::SetDecay(const float value, const float interval)
@@ -155,13 +155,13 @@ void SatisfactionGauge::Decay()
 
     if (decayInterval_ <= std::chrono::duration<float>(end - start_).count())
     {
-        Change(-decay_);
+        Apply(-decay_);
         
         start_ = std::chrono::system_clock::now();
     }
 }
 
-void SatisfactionGauge::Change(float value)
+void SatisfactionGauge::Apply(float value)
 {
     percentage_ += value;
     percentage_ = std::clamp(percentage_, 0.f, 100.f);
