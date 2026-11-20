@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="Script\system\event\TimeUp.cpp" />
     <ClCompile Include="Script\Eating\Plate.cpp">
       <Filter>Script\Eating</Filter>
     </ClCompile>
@@ -49,7 +50,6 @@
     <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
     <ClCompile Include="Script\system\combo\ComboManager.cpp" />
     <ClCompile Include="Script\system\combo\ComboView.cpp" />
-    <ClCompile Include="Script\system\event\TimeIsUp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Script">
@@ -96,6 +96,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Script\system\event\TimeUp.h" />
     <ClInclude Include="Script\Eating\Plate.h">
       <Filter>Script\Eating</Filter>
     </ClInclude>
@@ -151,6 +152,5 @@
     <ClInclude Include="Script\system\combo\ComboView.h" />
     <ClInclude Include="Source\type\Combo.h" />
     <ClInclude Include="Source\event\TimeLimitEvent.h" />
-    <ClInclude Include="Script\system\event\TimeIsUp.h" />
   </ItemGroup>
 </Project>

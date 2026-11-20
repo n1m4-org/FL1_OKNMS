@@ -1,12 +1,11 @@
 #pragma once
-
 #include <Script.h>
 #include <event/TimeLimitEvent.h>
-#include <Source/system/EventSubscription.h>
+#include <system/EventSubscription.h>
 
 
 TCLASS()
-class TimeIsUp : public Tako::Script
+class TimeUp : public Tako::Script
 {
     GENERATED_BODY()
 

@@ -1,4 +1,4 @@
-#include "TimeIsUp.h"
+#include "TimeUp.h"
 
 #include <system/EventListener.h>
 #include <UILayoutComponent.h>
@@ -7,7 +7,7 @@
 
 using namespace Tako;
 
-void TimeIsUp::BeginPlay()
+void TimeUp::BeginPlay()
 {
     subscriptions_ = EventListener::GetInstance()->Subscribe<Event::TimeUp>([this](const Event::TimeUp& event)
     {
@@ -15,7 +15,7 @@ void TimeIsUp::BeginPlay()
     });
 }
 
-void TimeIsUp::OnTimeUp(const Event::TimeUp& event)
+void TimeUp::OnTimeUp(const Event::TimeUp& event)
 {
     if (auto component = GetOwner()->GetComponent<UILayoutComponent>(); component)
     {
