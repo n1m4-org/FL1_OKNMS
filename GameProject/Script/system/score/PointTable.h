@@ -24,9 +24,9 @@ class PointTable : public Tako::Script
     GENERATED_BODY()
 
 public:
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
     bool DrawCustomImGui() override;
-#endif // _DEBUG
+#endif // TAKO_EDITOR
 
     /// <summary>
     /// 指定されたアクションに対応するスコアを取得します。

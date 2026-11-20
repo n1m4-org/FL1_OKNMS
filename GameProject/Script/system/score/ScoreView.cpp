@@ -6,10 +6,10 @@
 #include <UILayoutComponent.h>
 #include <UILayout.h>
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 #include <imgui.h>
 #include <utility/imgui/ImWidgetWrapper.h>
-#endif // _DEBUG
+#endif // TAKO_EDITOR
 
 using namespace Tako;
 
@@ -24,7 +24,7 @@ void ScoreView::Tick(float deltaTime)
     now += deltaTime;
 }
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 bool ScoreView::DrawCustomImGui()
 {
     static int addScoreAmount = 0;
@@ -39,7 +39,7 @@ bool ScoreView::DrawCustomImGui()
 
     return true;
 }
-#endif // _DEBUG
+#endif // TAKO_EDITOR
 
 void ScoreView::Apply(Score score)
 {

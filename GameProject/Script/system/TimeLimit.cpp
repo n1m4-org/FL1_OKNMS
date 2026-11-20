@@ -5,10 +5,10 @@
 #include <UILayoutComponent.h>
 #include <string>
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 #include <imgui.h>
 #include <utility/imgui/ImWidgetWrapper.h>
-#endif // _DEBUG
+#endif // TAKO_EDITOR
 
 using namespace Tako;
 
@@ -33,7 +33,7 @@ void TimeLimit::Tick(float deltaTime)
     if (isDirty_) UpdateText();
 }
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 bool TimeLimit::DrawCustomImGui()
 {
     ImGui::Text("Dirty : "); ImGui::SameLine();
@@ -52,7 +52,7 @@ bool TimeLimit::DrawCustomImGui()
 
     return false;
 }
-#endif // _DEBUG
+#endif // TAKO_EDITOR
 
 void TimeLimit::Start()
 {

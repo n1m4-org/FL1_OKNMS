@@ -5,6 +5,10 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Develop|x64">
+      <Configuration>Develop</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
@@ -18,10 +22,16 @@
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <!-- Debug はエディタ（TakoEditor.exe）が読む DLL、Release は 1 つの exe -->
+  <!-- Debug と Develop はエディタ（TakoEditor.exe）が読む DLL、Release は 1 つの exe -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Develop|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -42,15 +52,14 @@
     <Import Project="..\Engine\TakoEngine\build\TakoEngineGame.props" Condition="exists('$(MSBuildProjectDirectory)\..\Engine\TakoEngine\build\TakoEngineGame.props')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <!-- Debug の出力名（Game.dll）はエンジンの props が決める -->
+  <PropertyGroup>
+    <IncludePath>$(ProjectDir)Source;$(ProjectDir)Script;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <!-- Debug と Develop の出力名（Game.dll）はエンジンの props が決める -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>4304_Title</TargetName>
-    <IncludePath>$(ProjectDir)Source;$(ProjectDir)Script;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <!-- Windows.h の min / max マクロを止める（std::min / std::max を使うため） -->
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)Source;$(ProjectDir)Script;$(IncludePath)</IncludePath>
-  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -62,6 +71,8 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Script\Eating\Plate.cpp" />
+    <ClCompile Include="Script\Eating\Eater.cpp" />
     <ClCompile Include="Script\Director\KamisamaDirector.cpp" />
     <ClCompile Include="Script\Entity\Kamisama.cpp" />
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
@@ -79,6 +90,8 @@
     <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Script\Eating\Plate.h" />
+    <ClInclude Include="Script\Eating\Eater.h" />
     <ClInclude Include="Script\Director\KamisamaDirector.h" />
     <ClInclude Include="Script\Entity\Kamisama.h" />
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />

@@ -5,7 +5,7 @@
 
 #include <utility/imgui/ImWidgetWrapper.h>
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 bool ScoreManager::DrawCustomImGui()
 {
     static int amount = 0;
@@ -26,7 +26,7 @@ bool ScoreManager::DrawCustomImGui()
 
     return add || sub;
 }
-#endif // _DEBUG
+#endif // TAKO_EDITOR
 
 void ScoreManager::AddScore(uint32_t value)
 {

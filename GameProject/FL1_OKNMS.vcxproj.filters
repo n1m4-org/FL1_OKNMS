@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="Script\Eating\Plate.cpp">
+      <Filter>Script\Eating</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Eating\Eater.cpp">
+      <Filter>Script\Eating</Filter>
+    </ClCompile>
     <ClCompile Include="Script\Director\KamisamaDirector.cpp">
       <Filter>Script\Director</Filter>
     </ClCompile>
@@ -51,6 +57,9 @@
     <Filter Include="Script\Director">
       <UniqueIdentifier>{51af6a32-bd7b-410d-9469-b79ab16c1765}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Script\Eating">
+      <UniqueIdentifier>{3ae82763-b5d3-44bc-b674-fc9d13b43063}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Script\Entity">
       <UniqueIdentifier>{a2f203a0-a4ac-4cc9-9c2b-71218984e208}</UniqueIdentifier>
     </Filter>
@@ -83,6 +92,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Script\Eating\Plate.h">
+      <Filter>Script\Eating</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Eating\Eater.h">
+      <Filter>Script\Eating</Filter>
+    </ClInclude>
     <ClInclude Include="Script\Director\KamisamaDirector.h">
       <Filter>Script\Director</Filter>
     </ClInclude>
