@@ -105,6 +105,7 @@
     <ClInclude Include="Script\system\score\ScoreView.h" />
     <ClInclude Include="Script\system\TimeLimit.h" />
     <ClInclude Include="Source\Director\Lane.h" />
+    <ClInclude Include="Source\event\TimeLimitEvent.h" />
     <ClInclude Include="Source\system\EventListener.h" />
     <ClInclude Include="Source\system\EventSubscription.h" />
     <ClInclude Include="Source\type\Combo.h" />

@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <optional>
+#include <json.hpp>
 
 TSTRUCT()
 struct ScoreEntry
@@ -70,6 +71,13 @@ public:
 
     /// ベストスコアのエントリを取得します。
     const ScoreEntry& GetBestEntry() const;
+
+    /// JSONに変換
+    nlohmann::json to_json() const;
+
+    /// JSONから構築
+    void from_json(const nlohmann::json& j);
+
 
 private:
     // ハイスコアの配列 (昇順ソート済み)

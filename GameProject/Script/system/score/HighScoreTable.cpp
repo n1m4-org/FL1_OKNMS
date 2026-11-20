@@ -57,3 +57,32 @@ const ScoreEntry& HighScoreTable::GetBestEntry() const
     if (entries_.empty()) return kInvalidEntry;
     return entries_.front();
 }
+
+nlohmann::json HighScoreTable::to_json() const
+{
+    nlohmann::json j;
+    
+    for (const auto& entry : entries_)
+    {
+        nlohmann::json entryJson;
+        entryJson["name"] = entry.name;
+        entryJson["score"] = entry.score;
+        entryJson["timestamp"] = std::chrono::duration_cast<std::chrono::milliseconds>(entry.timestamp.time_since_epoch()).count();
+        j.push_back(entryJson);
+    }
+
+    return j;
+}
+
+void HighScoreTable::from_json(const nlohmann::json& j)
+{
+    for (const auto& entryJson : j)
+    {
+        ScoreEntry entry;
+        entry.name = entryJson.at("name").get<std::string>();
+        entry.score = entryJson.at("score").get<Score>();
+        auto timestampMs = entryJson.at("timestamp").get<int64_t>();
+        entry.timestamp = std::chrono::system_clock::time_point(std::chrono::milliseconds(timestampMs));
+        entries_.push_back(entry);
+    }
+}
