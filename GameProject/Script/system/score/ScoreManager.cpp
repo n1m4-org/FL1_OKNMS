@@ -52,5 +52,5 @@ void ScoreManager::ApplyToView()
     auto pScript = pActor->GetScript<ScoreView>();
     if (!pScript) return;
 
-    pScript->ApplyScore(score_);
+    pScript->Apply(score_);
 }

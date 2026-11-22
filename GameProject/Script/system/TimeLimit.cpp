@@ -3,6 +3,7 @@
 #include <Actor.h>
 #include <UILayout.h>
 #include <UILayoutComponent.h>
+#include <event/TimeLimitEvent.h>
 #include <string>
 
 #ifdef TAKO_EDITOR
@@ -22,6 +23,10 @@ void TimeLimit::Tick(float deltaTime)
 
         // 残り時間が 0 になったらカウントを止める
         CountStopIfFinished();
+
+        // 残り時間が 0 になったらイベントを発行する
+        PublishEventIfFinished();
+
         break;
 
     case State::Ready:
@@ -77,6 +82,12 @@ void TimeLimit::AddRemainingTime(float time)
     isDirty_ = true;
 }
 
+void TimeLimit::BeginPlay()
+{
+    remainingTime_ = maxLimitTime_;
+    isDirty_ = true;
+}
+
 void TimeLimit::DecreaseTime(float time)
 {
     remainingTime_ -= time;
@@ -90,6 +101,14 @@ void TimeLimit::CountStopIfFinished()
         remainingTime_ = 0.0f;
         isDirty_ = true;
         state_ = State::Ready;
+    }
+}
+
+void TimeLimit::PublishEventIfFinished() const
+{
+    if (remainingTime_ <= 0.0f)
+    {
+        EventListener::GetInstance()->Publish<Event::TimeUp>({});
     }
 }
 

@@ -71,12 +71,15 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Script\system\event\TimeUp.cpp" />
     <ClCompile Include="Script\Eating\Plate.cpp" />
     <ClCompile Include="Script\Eating\Eater.cpp" />
     <ClCompile Include="Script\Director\KamisamaDirector.cpp" />
     <ClCompile Include="Script\Entity\Kamisama.cpp" />
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
-    <ClCompile Include="Script\system\EventDispatcher.cpp" />
+    <ClCompile Include="Script\system\combo\ComboManager.cpp" />
+    <ClCompile Include="Script\system\combo\ComboView.cpp" />
+    <ClCompile Include="Script\system\event\EventDispatcher.cpp" />
     <ClCompile Include="Script\system\score\HighScoreTable.cpp" />
     <ClCompile Include="Script\system\score\PointTable.cpp" />
     <ClCompile Include="Script\system\score\ScoreManager.cpp" />
@@ -88,12 +91,15 @@
     <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Script\system\event\TimeUp.h" />
     <ClInclude Include="Script\Eating\Plate.h" />
     <ClInclude Include="Script\Eating\Eater.h" />
     <ClInclude Include="Script\Director\KamisamaDirector.h" />
     <ClInclude Include="Script\Entity\Kamisama.h" />
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />
-    <ClInclude Include="Script\system\EventDispatcher.h" />
+    <ClInclude Include="Script\system\combo\ComboManager.h" />
+    <ClInclude Include="Script\system\combo\ComboView.h" />
+    <ClInclude Include="Script\system\event\EventDispatcher.h" />
     <ClInclude Include="Script\system\score\HighScoreTable.h" />
     <ClInclude Include="Script\system\score\PointAction.h" />
     <ClInclude Include="Script\system\score\PointTable.h" />
@@ -101,8 +107,10 @@
     <ClInclude Include="Script\system\score\ScoreView.h" />
     <ClInclude Include="Script\system\TimeLimit.h" />
     <ClInclude Include="Source\Director\Lane.h" />
+    <ClInclude Include="Source\event\TimeLimitEvent.h" />
     <ClInclude Include="Source\system\EventListener.h" />
     <ClInclude Include="Source\system\EventSubscription.h" />
+    <ClInclude Include="Source\type\Combo.h" />
     <ClInclude Include="Source\type\Score.h" />
     <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h" />
   </ItemGroup>

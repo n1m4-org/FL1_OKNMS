@@ -34,14 +34,14 @@ bool ScoreView::DrawCustomImGui()
 
     if (add)
     {
-        ApplyScore(scoreTarget_ += addScoreAmount);
+        Apply(scoreTarget_ += addScoreAmount);
     }
 
     return true;
 }
 #endif // TAKO_EDITOR
 
-void ScoreView::ApplyScore(Score score)
+void ScoreView::Apply(Score score)
 {
     updatedTiming_ = now;
     scoreDisplayedLast_ = scoreDisplayed_;

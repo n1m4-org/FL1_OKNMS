@@ -2,6 +2,9 @@
 
 #include <Script.h>
 
+#include <system/EventListener.h>
+
+
 /// 制限時間クラス
 /// ゲームの制限時間をカウントするクラス
 /// 時間が０になったら行う処理は別のクラスが担当する
@@ -15,7 +18,7 @@ public:
     TENUM()
     enum class State { Ready, Running, Paused };
 
-
+    void BeginPlay() override;
     void Tick(float deltaTime) override;
 
 
@@ -36,6 +39,7 @@ public:
     // 残り時間の追加
     void AddRemainingTime(float time);
 
+
 private:
     // 残り時間をへらす
     void DecreaseTime(float time);
@@ -43,11 +47,13 @@ private:
     // 制限時間を終えたらカウントを停止
     void CountStopIfFinished();
 
+    void PublishEventIfFinished() const;
+
     // テキストの更新
     void UpdateText();
 
 
-    TPROPERTY(Edit)
+    TPROPERTY(Edit, ClampMin = 0)
     float maxLimitTime_ = 60.0f;
 
     TPROPERTY(Visible)
