@@ -12,10 +12,18 @@ TSTRUCT()
 struct ScoreEntry
 {
     GENERATED_STRUCT_BODY()
+
+    TPROPERTY(Visible)
     std::string name;
-    Score score;
+
+    TPROPERTY(Edit)
+    Score score = 0;
+
     std::chrono::system_clock::time_point timestamp;
 };
+
+void to_json(nlohmann::json& j, const ScoreEntry& e);
+void from_json(const nlohmann::json& j, ScoreEntry& e);
 
 
 TCLASS()
@@ -30,7 +38,7 @@ public:
     struct SubmitResult
     {
         std::optional<size_t> rank; // 登録されたランキング (0-based)
-        bool isNewRecord;           // 新記録かどうか
+        bool isNewRecord = false;   // 新記録かどうか
     };
 
     explicit HighScoreTable(size_t capacity = 999u);
@@ -51,17 +59,17 @@ public:
     std::optional<size_t> RankOf(const Score score) const;
 
     /// <summary>
-    /// 名前とスコアを登録します。
+    /// 指定した名前とスコアで送信結果を作成します。
     /// </summary>
-    /// <param name="name">登録する名前。</param>
-    /// <param name="score">登録するスコア。</param>
-    /// <returns>登録結果を表す32ビット符号なし整数。</returns>
+    /// <param name="name">送信対象の名前。</param>
+    /// <param name="score">送信するスコア。</param>
+    /// <returns>送信結果。</returns>
     SubmitResult Submit(const std::string& name, const Score score);
 
 
     /// --- 配列インターフェース ---
     size_t size() const { return entries_.size(); }
-    size_t capacity() const { return entries_.capacity(); }
+    size_t capacity() const { return capacity_; }
     bool empty() const { return entries_.empty(); }
     void clear() { entries_.clear(); }
 
@@ -72,15 +80,16 @@ public:
     /// ベストスコアのエントリを取得します。
     const ScoreEntry& GetBestEntry() const;
 
-    /// JSONに変換
-    nlohmann::json to_json() const;
+    /// ハイスコアの配列をJSON形式に変換します。
+    nlohmann::json ToJSON() const;
 
-    /// JSONから構築
-    void from_json(const nlohmann::json& j);
-
+    /// JSON形式のハイスコア配列を復元します。
+    void FromJSON(const nlohmann::json& j);
 
 private:
-    // ハイスコアの配列 (昇順ソート済み)
+    // ハイスコアの配列 (降順ソート済み)
     ScoreEntries entries_;
     size_t capacity_;
 };
+
+

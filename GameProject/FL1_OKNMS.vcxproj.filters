@@ -50,6 +50,7 @@
     <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
     <ClCompile Include="Script\system\combo\ComboManager.cpp" />
     <ClCompile Include="Script\system\combo\ComboView.cpp" />
+    <ClCompile Include="Script\system\score\HighScoreStorage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Script">
@@ -152,5 +153,7 @@
     <ClInclude Include="Script\system\combo\ComboView.h" />
     <ClInclude Include="Source\type\Combo.h" />
     <ClInclude Include="Source\event\TimeLimitEvent.h" />
+    <ClInclude Include="Script\system\score\HighScoreStorage.h" />
+    <ClInclude Include="Source\utility\GameLog.h" />
   </ItemGroup>
 </Project>
