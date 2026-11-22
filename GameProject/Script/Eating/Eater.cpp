@@ -7,7 +7,7 @@
 #include "Script/HUD/SatisfactionGauge/SatisfactionGauge.h"
 #include "AudioSourceComponent.h"
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
 #include "imgui.h"
 
 #include <algorithm>
@@ -34,12 +34,8 @@ bool Eater::DrawCustomImGui()
     }
 
     // つなぎ先が取れているか（Tick と同じ取り方で確かめる）
-    Tako::Actor* plateActor = GetOwner()->Resolve(plate_);
     Tako::Actor* gaugeActor = GetOwner()->Resolve(gauge_);
-    const bool   hasPlate   = plateActor && plateActor->GetScript<Plate>();
     const bool   hasGauge   = gaugeActor && gaugeActor->GetScript<SatisfactionGauge>();
-    ImGui::TextColored(hasPlate ? kGood : kBad, hasPlate ? "Plate : OK" : "Plate : missing");
-    ImGui::SameLine(0.f, 24.f);
     ImGui::TextColored(hasGauge ? kGood : kBad, hasGauge ? "Gauge : OK" : "Gauge : missing");
     ImGui::Text("Pending : %.2f", pends_);
 
@@ -156,6 +152,10 @@ void Eater::Tick(float deltaTime)
     Eat();
 }
 
+void Eater::SetPlate(Plate* plate) {
+    pPlate_ = plate;
+}
+
 void Eater::SetTempo(float sec, float time) 
 {
     slideFrom_ = interval_;
@@ -169,16 +169,36 @@ void Eater::SetTempoFromBpm(float bpm, float time)
     SetTempo(60.f / bpm, time);
 }
 
+void Eater::Activate(bool active) 
+{
+    active_ = active;
+}
+
+bool Eater::IsSatisfied() const 
+{
+    auto actor = GetOwner()->Resolve(gauge_);
+    auto* gauge = actor ? actor->GetScript<SatisfactionGauge>() : nullptr;
+    return gauge && gauge->IsFull();
+}
+
+void Eater::SetGaugeVisible(bool visible) const
+{
+    if (Tako::Actor* gauge = GetOwner()->Resolve(gauge_))
+    {
+        gauge->SetActive(visible);
+    }
+}
+
 void Eater::Eat() 
 {
     if(pends_ <= 0.f) return;
 
-    auto plate = GetOwner()->Resolve(plate_)->GetScript<Plate>();
-    auto gauge = GetOwner()->Resolve(gauge_)->GetScript<SatisfactionGauge>();
+    auto actor = GetOwner()->Resolve(gauge_);
+    auto* gauge = actor ? actor->GetScript<SatisfactionGauge>() : nullptr;
 
-    if(!plate || !gauge) return;
+    if(!pPlate_ || !gauge) return;
 
-    const float taken = plate->Take(pends_);
+    const float taken = pPlate_->Take(pends_);
     gauge->Charge(taken * percentMul);
 
     pends_ = 0.f;

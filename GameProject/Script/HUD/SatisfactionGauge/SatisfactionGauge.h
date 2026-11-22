@@ -45,7 +45,7 @@ class SatisfactionGauge : public Tako::Script
     };
 
     // 背景を、ゲージからワールドでずらす量
-    Tako::Vector3 offset_ = { 0.f, 0.f, 0.1f};
+    Tako::Vector3 offset_ = { 0.f, 0.f, 0.001f};
 
     // メッシュ再生成は描画コマンド記録中に行えないため、次の Tick まで遅延させる
     bool isRingDirty_ = false;
@@ -89,6 +89,8 @@ public:
      * @param interval 間隔
      */
     void SetDecay(float value, float interval);
+
+    bool IsFull() const;
 
 private:
     void RebuildRings();

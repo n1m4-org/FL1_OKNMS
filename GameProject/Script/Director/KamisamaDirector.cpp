@@ -1,6 +1,5 @@
 #include "KamisamaDirector.h"
 
-#include "Script/Entity/Kamisama.h"
 
 #include <Actor.h>
 #include <BaseScene.h>
@@ -9,6 +8,13 @@
 
 // 仮
 #include <Input.h>
+
+#include "Script/Entity/Kamisama.h"
+#include "Eating/Plate.h"
+
+#ifdef TAKO_EDITOR
+#include "imgui.h"
+#endif
 
 constexpr static int kMaxKamisamaCount = 10;
 
@@ -28,14 +34,20 @@ void KamisamaDirector::BeginPlay()
     kamisamas_.reserve(kMaxKamisamaCount);
 
     pLanes_.clear();
-    pLanes_.reserve(2);
+    pLanes_.reserve(2); 
+    
+    auto actor = GetOwner()->Resolve(plateA_);
+    auto plate = actor ? actor->GetScript<Plate>() : nullptr;
 
     auto lane1 = std::make_unique<Lane>();
-    lane1->Initialize({ -5.0f, 0, -20.0f });
+    lane1->Initialize({ -5.0f, 0, -20.0f }, plate);
     pLanes_.push_back(std::move(lane1));
 
+    actor = GetOwner()->Resolve(plateB_);
+    plate = actor ? actor->GetScript<Plate>() : nullptr;
+
     auto lane2 = std::make_unique<Lane>();
-    lane2->Initialize({ 5.0f, 0, -20.0f });
+    lane2->Initialize({ 5.0f, 0, -20.0f }, plate);
     pLanes_.push_back(std::move(lane2));
 
     Spawn();
@@ -44,14 +56,19 @@ void KamisamaDirector::BeginPlay()
 
 void KamisamaDirector::Tick([[maybe_unused]] float deltaTime)
 {
-    for (auto& l : pLanes_)
+    for (auto& lane : pLanes_)
     {
-        if (!l->IsAttached())
+        if (auto kamisama = lane->GetKamisama(); kamisama && ShouldExit(*kamisama))
+        {
+            kamisama->BeginExit();
+        }
+
+        if (!lane->IsAttached())
         {
             int32_t maxLoopCount = kMaxKamisamaCount * 2;
             while (true)
             {
-                if (kamisamas_.size() == 0)
+                if (kamisamas_.empty())
                 {
                     break;
                 }
@@ -60,7 +77,7 @@ void KamisamaDirector::Tick([[maybe_unused]] float deltaTime)
                 Kamisama* kamisama = kamisamas_[randomIndex];
                 if (kamisama && kamisama->IsWandering())// 徘徊中のかみさまを見つけたらレーンに紐づける
                 {
-                    AttachToLane(kamisama, l.get());
+                    AttachToLane(kamisama, lane.get());
                     break;
                 }
                 // 無限ループ防止のため、最大ループ回数を設定
@@ -77,14 +94,17 @@ void KamisamaDirector::Tick([[maybe_unused]] float deltaTime)
     {
         Spawn();
     }
-    if (Tako::Input::GetInstance()->TriggerKey(DIK_K))
-    {
-        BeginExit();
-    }
 }
 
 void KamisamaDirector::LateTick([[maybe_unused]] float deltaTime)
 {
+    for(const auto& lane : pLanes_)
+    {
+        if(auto kamisama = lane->GetKamisama(); kamisama && kamisama->IsExited())
+        {
+            lane->DetachKamisama();
+        }
+    }
     RemoveExited();
 }
 
@@ -118,21 +138,6 @@ Kamisama* KamisamaDirector::Spawn()
     return kamisama;
 }
 
-void KamisamaDirector::BeginExit()
-{
-    for (Kamisama* kamisama : kamisamas_)
-    {
-        for (auto& l : pLanes_)
-        {
-            if (l->IsAttachedTo(kamisama))
-            {
-                l->DetachKamisama();
-                kamisama->BeginExit();
-            }
-        }
-    }
-}
-
 void KamisamaDirector::RemoveExited()
 {
     // Actor が消えるのは次のフレームの頭。ポインタはここで手放す
@@ -152,7 +157,7 @@ void KamisamaDirector::AttachToLane(Kamisama* kamisama, Lane* lane)
     if (kamisama && lane)
     {
         lane->AttachKamisama(kamisama);
-        kamisama->AttachToLane(lane->GetPosition());
+        kamisama->AttachToLane(lane->GetPosition(), lane->GetPlate());
     }
 }
 
@@ -166,3 +171,38 @@ bool KamisamaDirector::CanSpawn() const
 
     return false;
 }
+
+bool KamisamaDirector::ShouldExit(const Kamisama& kamisama) const
+{
+    if(!kamisama.IsEating()) return false;
+
+    return kamisama.IsSatisfied();
+}
+
+#ifdef TAKO_EDITOR
+bool KamisamaDirector::DrawCustomImGui()
+{
+    ImGui::SeparatorText("Debug");
+
+    // 編集中に出すと、かみさまがシーンに残って一緒に保存されるので、Play 中だけ押せる
+    const bool playing = GetOwner()->GetScene()->IsPlaying();
+
+    ImGui::BeginDisabled(!playing || !CanSpawn());
+    if (ImGui::Button("Spawn Wandering"))
+    {
+        Spawn();// Spawn の中の Initialize で徘徊から始まる
+    }
+    ImGui::EndDisabled();
+
+    ImGui::SameLine();
+    ImGui::Text("%zu / %d", kamisamas_.size(), kMaxKamisamaCount);
+
+    if (!playing)
+    {
+        ImGui::TextDisabled("(Play only)");
+    }
+
+    // 保存する値（TPROPERTY）は変えていない
+    return false;
+}
+#endif
