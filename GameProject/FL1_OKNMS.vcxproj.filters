@@ -88,6 +88,9 @@
     <Filter Include="Script\HUD\SatisfactionGauge">
       <UniqueIdentifier>{c3a94dd3-09fc-4d56-b3dc-ec78e326c3a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Script\system\combo">
+      <UniqueIdentifier>{4a777a61-56fa-460b-afa8-ebfc6613a6f6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Script\system\score">
       <UniqueIdentifier>{7944449f-7bbb-4074-9ae7-0f0ae52bded0}</UniqueIdentifier>
     </Filter>
@@ -141,6 +144,9 @@
     </ClInclude>
     <ClInclude Include="Source\system\EventSubscription.h">
       <Filter>Source\system</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\type\Combo.h">
+      <Filter>Source\type</Filter>
     </ClInclude>
     <ClInclude Include="Source\type\Score.h">
       <Filter>Source\type</Filter>
