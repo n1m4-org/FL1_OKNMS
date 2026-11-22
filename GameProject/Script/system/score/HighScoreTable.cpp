@@ -53,36 +53,48 @@ HighScoreTable::SubmitResult HighScoreTable::Submit(const std::string& name, con
 
 const ScoreEntry& HighScoreTable::GetBestEntry() const
 {
-    static ScoreEntry kInvalidEntry = { "Invalid Score", 0u, {} };
+    static const ScoreEntry kInvalidEntry = { "Invalid Score", 0u, {} };
     if (entries_.empty()) return kInvalidEntry;
     return entries_.front();
 }
 
-nlohmann::json HighScoreTable::to_json() const
+nlohmann::json HighScoreTable::ToJSON() const
 {
-    nlohmann::json j;
-    
-    for (const auto& entry : entries_)
-    {
-        nlohmann::json entryJson;
-        entryJson["name"] = entry.name;
-        entryJson["score"] = entry.score;
-        entryJson["timestamp"] = std::chrono::duration_cast<std::chrono::milliseconds>(entry.timestamp.time_since_epoch()).count();
-        j.push_back(entryJson);
-    }
-
-    return j;
+    return entries_;
 }
 
-void HighScoreTable::from_json(const nlohmann::json& j)
+void HighScoreTable::FromJSON(const nlohmann::json& j)
 {
-    for (const auto& entryJson : j)
+    entries_.clear();
+    if (!j.is_array()) return;
+
+    j.get_to(entries_);
+
+    // 降順ソート済みであることを保証する
+    std::ranges::stable_sort(entries_, [](const ScoreEntry& a, const ScoreEntry& b)
     {
-        ScoreEntry entry;
-        entry.name = entryJson.at("name").get<std::string>();
-        entry.score = entryJson.at("score").get<Score>();
-        auto timestampMs = entryJson.at("timestamp").get<int64_t>();
-        entry.timestamp = std::chrono::system_clock::time_point(std::chrono::milliseconds(timestampMs));
-        entries_.push_back(entry);
+        if (a.score != b.score) return a.score > b.score;
+
+        // 同点の場合は、先に登録されたスコアを優先する
+        return a.timestamp < b.timestamp;
+    });
+
+    if (entries_.size() > capacity_)
+    {
+        entries_.resize(capacity_);
     }
+}
+
+void to_json(nlohmann::json& j, const ScoreEntry& e)
+{
+    j["name"] = e.name;
+    j["score"] = e.score;
+    j["timestamp"] = std::chrono::duration_cast<std::chrono::milliseconds>(e.timestamp.time_since_epoch()).count();
+}
+
+void from_json(const nlohmann::json& j, ScoreEntry& e)
+{
+    e.name = j.at("name").get<std::string>();
+    e.score = j.at("score").get<Score>();
+    e.timestamp = std::chrono::system_clock::time_point(std::chrono::milliseconds(j.at("timestamp").get<int64_t>()));
 }

@@ -688,6 +688,83 @@
         }
       },
       "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "HighScoreStorage",
+            "tableActor": {
+              "actor": 22
+            },
+            "tableDirectoryPath": "Saves/",
+            "tableFileName": "HighScoreTable.json"
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 21,
+      "parent": 16,
+      "properties": {
+        "active": true,
+        "name": "HighScoreStorage",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "HighScoreTable"
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 22,
+      "parent": 16,
+      "properties": {
+        "active": true,
+        "name": "HighScoreTable",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
     }
   ]
 }
