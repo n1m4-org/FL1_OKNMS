@@ -11,5 +11,13 @@ class EventDispatcher : public Tako::Script
     GENERATED_BODY()
 
 public:
+    void BeginPlay() override;
     void LateTick(float deltaTime) override;
+    
+#ifdef TAKO_EDITOR
+    bool DrawCustomImGui() override;
+#endif // TAKO_EDITOR
+
+private:
+    std::vector<std::string> dispatchedEventNames_;
 };
