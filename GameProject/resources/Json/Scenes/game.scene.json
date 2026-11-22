@@ -5,147 +5,6 @@
         "MeshComponent": {
           "order": 0,
           "properties": {
-            "model": "",
-            "offset": {
-              "rotate": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "scale": [
-                1.0,
-                1.0,
-                1.0
-              ],
-              "translate": [
-                0.0,
-                0.0,
-                0.0
-              ]
-            },
-            "renderSettings": {
-              "CastShadow": false,
-              "Values": {
-                "color": [
-                  1.0,
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "enableLighting": 0
-              }
-            },
-            "visible": true
-          },
-          "type": "MeshComponent"
-        },
-        "SatisfactionGauge": {
-          "order": 1,
-          "properties": {
-            "background": {
-              "actor": 2
-            },
-            "script": "SatisfactionGauge"
-          },
-          "type": "ScriptComponent"
-        }
-      },
-      "id": 1,
-      "properties": {
-        "active": true,
-        "name": "SatisfactionGauge",
-        "tags": [],
-        "transform": {
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "translate": [
-            0.0,
-            4.199999809265137,
-            0.0
-          ]
-        }
-      },
-      "type": "Actor"
-    },
-    {
-      "components": {
-        "MeshComponent": {
-          "order": 0,
-          "properties": {
-            "model": "",
-            "offset": {
-              "rotate": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "scale": [
-                1.0,
-                1.0,
-                1.0
-              ],
-              "translate": [
-                0.0,
-                0.0,
-                0.0
-              ]
-            },
-            "renderSettings": {
-              "CastShadow": false,
-              "Values": {
-                "color": [
-                  0.6627451,
-                  0.6627451,
-                  0.6627451,
-                  1.0
-                ],
-                "enableLighting": 0
-              }
-            },
-            "visible": true
-          },
-          "type": "MeshComponent"
-        }
-      },
-      "id": 2,
-      "parent": 1,
-      "properties": {
-        "active": true,
-        "name": "Background",
-        "tags": [],
-        "transform": {
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "translate": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "type": "Actor"
-    },
-    {
-      "components": {
-        "MeshComponent": {
-          "order": 0,
-          "properties": {
             "model": "plane.obj",
             "offset": {
               "rotate": [
@@ -228,6 +87,12 @@
         "KamisamaDirector": {
           "order": 0,
           "properties": {
+            "plateA": {
+              "actor": 12
+            },
+            "plateB": {
+              "actor": 13
+            },
             "script": "KamisamaDirector"
           },
           "type": "ScriptComponent"
@@ -495,10 +360,10 @@
           "type": "ScriptComponent"
         }
       },
-      "id": 10,
+      "id": 12,
       "properties": {
         "active": true,
-        "name": "Plate",
+        "name": "PlateA",
         "tags": [],
         "transform": {
           "rotate": [
@@ -512,7 +377,7 @@
             1.0
           ],
           "translate": [
-            0.0,
+            -5.0,
             1.5,
             -8.199999809265137
           ]
@@ -522,38 +387,44 @@
     },
     {
       "components": {
-        "AudioSourceComponent": {
-          "order": 1,
-          "properties": {
-            "loop": false,
-            "playOnStart": false,
-            "sound": "kick.wav",
-            "volume": 0.8399999737739563
-          },
-          "type": "AudioSourceComponent"
-        },
-        "Script": {
+        "MeshComponent": {
           "order": 0,
           "properties": {
-            "active": false,
-            "amount": 5.400000095367432,
-            "gauge": {
-              "actor": 1
+            "model": "EngineResources/Model/sphere.gltf",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
             },
-            "interval": 1.600000023841858,
-            "percentMul": 1.0,
-            "plate": {
-              "actor": 10
-            },
-            "script": "Eater"
+            "visible": true
+          },
+          "type": "MeshComponent"
+        },
+        "Script": {
+          "order": 1,
+          "properties": {
+            "amount": 112.80000305175781,
+            "script": "Plate"
           },
           "type": "ScriptComponent"
         }
       },
-      "id": 11,
+      "id": 13,
       "properties": {
         "active": true,
-        "name": "Eater",
+        "name": "PlateB",
         "tags": [],
         "transform": {
           "rotate": [
@@ -567,9 +438,9 @@
             1.0
           ],
           "translate": [
-            0.0,
-            0.0,
-            0.0
+            5.0,
+            1.5,
+            -8.199999809265137
           ]
         }
       },

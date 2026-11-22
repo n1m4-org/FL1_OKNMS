@@ -352,3 +352,6 @@ Engine/
 
 # Claude Code temporary files
 tmpclaude-*
+/ScriptingManual.md
+/.editorconfig
+/GameProject/.clangformat
