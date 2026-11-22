@@ -2,6 +2,7 @@
 #include <Script.h>
 #include <event/TimeLimitEvent.h>
 #include <system/EventSubscription.h>
+#include <optional>
 
 
 TCLASS()
@@ -15,5 +16,5 @@ public:
 private:
     void OnTimeUp(const Event::TimeUp& event);
 
-    EventSubscription subscriptions_;
+    std::optional<EventSubscription> subscriptions_;
 };

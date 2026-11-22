@@ -47,13 +47,13 @@ private:
     // 制限時間を終えたらカウントを停止
     void CountStopIfFinished();
 
-    void PublishEventIfFinished();
+    void PublishEventIfFinished() const;
 
     // テキストの更新
     void UpdateText();
 
 
-    TPROPERTY(Edit)
+    TPROPERTY(Edit, ClampMin = 0)
     float maxLimitTime_ = 60.0f;
 
     TPROPERTY(Visible)

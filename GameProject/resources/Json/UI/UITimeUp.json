@@ -1,0 +1,76 @@
+{
+  "elements": [
+    {
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "children": [],
+      "color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "flip": [
+        false,
+        false
+      ],
+      "locked": false,
+      "name": "Text",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "position": [
+        0.0,
+        0.0
+      ],
+      "postEffect": false,
+      "preserveAspect": false,
+      "rotation": 0.0,
+      "size": [
+        300.0,
+        60.0
+      ],
+      "sliceOverride": false,
+      "sliced": false,
+      "text": {
+        "align": [
+          0.5,
+          0.5
+        ],
+        "font": "",
+        "lineSpacing": 1.0,
+        "outlineColor": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "outlineWidth": 0.0,
+        "size": 32.0,
+        "string": "Time is up",
+        "wrap": true
+      },
+      "texture": "",
+      "uvLeftTop": [
+        0.0,
+        0.0
+      ],
+      "uvSize": [
+        0.0,
+        0.0
+      ],
+      "visible": false
+    }
+  ],
+  "referenceResolution": [
+    1920.0,
+    1080.0
+  ]
+}

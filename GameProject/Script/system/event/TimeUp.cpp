@@ -4,6 +4,7 @@
 #include <UILayoutComponent.h>
 #include <UILayout.h>
 #include <Actor.h>
+#include <Logger.h>
 
 using namespace Tako;
 
@@ -20,5 +21,6 @@ void TimeUp::OnTimeUp(const Event::TimeUp& event)
     if (auto component = GetOwner()->GetComponent<UILayoutComponent>(); component)
     {
         component->GetLayout().SetVisible("Text", true);
+        Tako::Logger::Log("TimeUp");
     }
 }

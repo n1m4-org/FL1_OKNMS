@@ -104,9 +104,12 @@ void TimeLimit::CountStopIfFinished()
     }
 }
 
-void TimeLimit::PublishEventIfFinished()
+void TimeLimit::PublishEventIfFinished() const
 {
-    EventListener::GetInstance()->Publish<Event::TimeUp>({});
+    if (remainingTime_ <= 0.0f)
+    {
+        EventListener::GetInstance()->Publish<Event::TimeUp>({});
+    }
 }
 
 void TimeLimit::UpdateText()

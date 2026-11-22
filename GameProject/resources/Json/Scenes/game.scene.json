@@ -300,7 +300,7 @@
         "Script": {
           "order": 1,
           "properties": {
-            "maxLimitTime": 60.0,
+            "maxLimitTime": 5.0,
             "remainingTime": 0.0,
             "script": "TimeLimit",
             "state": "Ready"
@@ -774,11 +774,28 @@
       "type": "Actor"
     },
     {
-      "components": {},
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "TimeUp"
+          },
+          "type": "ScriptComponent"
+        },
+        "UILayoutComponent": {
+          "order": 1,
+          "properties": {
+            "layout": "UITimeUp",
+            "sortingOrder": 0,
+            "visible": true
+          },
+          "type": "UILayoutComponent"
+        }
+      },
       "id": 20,
       "properties": {
         "active": true,
-        "name": "Actor",
+        "name": "TimeUp",
         "tags": [],
         "transform": {
           "rotate": [
