@@ -2,7 +2,9 @@
 
 #include <Vector3.h>
 
+
 class Kamisama;
+class Plate;
 
 class Lane
 {
@@ -10,7 +12,7 @@ public:
     Lane() = default;
     ~Lane() = default;
 
-    void Initialize(const Tako::Vector3& position);
+    void Initialize(const Tako::Vector3& position, Plate* plate);
 
     const Tako::Vector3& GetPosition() const { return position_; }
 
@@ -21,9 +23,14 @@ public:
     bool IsAttached() const { return pKamisama_ != nullptr; }
 
     bool IsAttachedTo(Kamisama* kamisama) const { return pKamisama_ == kamisama; }
+
+    Plate* GetPlate() const { return pPlate_; }
+    Kamisama* GetKamisama() const { return pKamisama_; }
+
 private:
 
     Tako::Vector3 position_;
 
     Kamisama* pKamisama_ = nullptr;
+    Plate* pPlate_ = nullptr;
 };

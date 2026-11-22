@@ -1,49 +1,240 @@
 {
-  "type": "Actor",
-  "properties": {
-    "name": "Kamisama",
-    "transform": {
-      "scale": [
-        1.0,
-        2.0,
-        1.0
-      ],
-      "rotate": [
-        0.0,
-        0.0,
-        0.0
-      ],
-      "translate": [
-        0.0,
-        0.0,
-        0.0
-      ]
-    }
-  },
-  "components": {
-    "MeshComponent": {
-      "type": "MeshComponent",
-      "order": 0,
+  "actors": [
+    {
+      "type": "Actor",
+      "id": 1,
       "properties": {
-        "model": "EngineResources/Model/white_cube.gltf",
-        "renderSettings": {
-          "Values": {
-            "color": [
-              1.0,
-              1.0,
-              1.0,
-              1.0
-            ]
+        "active": true,
+        "name": "Kamisama",
+        "tags": [],
+        "transform": {
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "components": {
+        "MeshComponent": {
+          "type": "MeshComponent",
+          "order": 0,
+          "properties": {
+            "model": "EngineResources/Model/white_cube.gltf",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                2.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "renderSettings": {
+              "Values": {
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              }
+            },
+            "visible": true
+          }
+        },
+        "Kamisama": {
+          "type": "ScriptComponent",
+          "order": 1,
+          "properties": {
+            "script": "Kamisama"
+          }
+        },
+        "Eater": {
+          "type": "ScriptComponent",
+          "order": 2,
+          "properties": {
+            "active": false,
+            "amount": 5.400000095367432,
+            "gauge": {
+              "actor": 2
+            },
+            "interval": 1.600000023841858,
+            "percentMul": 1.0,
+            "script": "Eater"
+          }
+        },
+        "AudioSourceComponent": {
+          "type": "AudioSourceComponent",
+          "order": 3,
+          "properties": {
+            "loop": false,
+            "playOnStart": false,
+            "sound": "kick.wav",
+            "volume": 0.8399999737739563
           }
         }
       }
     },
-    "Kamisama": {
-      "type": "ScriptComponent",
-      "order": 1,
+    {
+      "type": "Actor",
+      "id": 2,
+      "parent": 1,
       "properties": {
-        "script": "Kamisama"
+        "active": true,
+        "name": "SatisfactionGauge",
+        "tags": [],
+        "transform": {
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translate": [
+            0.0,
+            4.0,
+            0.0
+          ]
+        }
+      },
+      "components": {
+        "MeshComponent": {
+          "type": "MeshComponent",
+          "order": 0,
+          "properties": {
+            "model": "",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "renderSettings": {
+              "CastShadow": false,
+              "Values": {
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "enableLighting": 0
+              }
+            },
+            "visible": true
+          }
+        },
+        "SatisfactionGauge": {
+          "type": "ScriptComponent",
+          "order": 1,
+          "properties": {
+            "background": {
+              "actor": 3
+            },
+            "script": "SatisfactionGauge"
+          }
+        }
+      }
+    },
+    {
+      "type": "Actor",
+      "id": 3,
+      "parent": 2,
+      "properties": {
+        "active": true,
+        "name": "Background",
+        "tags": [],
+        "transform": {
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "components": {
+        "MeshComponent": {
+          "type": "MeshComponent",
+          "order": 0,
+          "properties": {
+            "model": "",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "renderSettings": {
+              "CastShadow": false,
+              "Values": {
+                "color": [
+                  0.6627451,
+                  0.6627451,
+                  0.6627451,
+                  1.0
+                ],
+                "enableLighting": 0
+              }
+            },
+            "visible": true
+          }
+        }
       }
     }
-  }
+  ]
 }

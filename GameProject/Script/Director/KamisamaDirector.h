@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ActorRef.h>
 #include <memory>
 #include <vector>
 
@@ -18,18 +19,25 @@ class KamisamaDirector : public Tako::Script
 {
     GENERATED_BODY()
 
+    TPROPERTY(Edit, Required, ActorWith = "Plate")
+    Tako::ActorRef plateA_;
+    
+    TPROPERTY(Edit, Required, ActorWith = "Plate")
+    Tako::ActorRef plateB_;
+
 public:
     void BeginPlay() override;
     void Tick(float deltaTime) override;
     void LateTick(float deltaTime) override;
 
+#ifdef TAKO_EDITOR
+    bool DrawCustomImGui() override;
+#endif
+
 private:
 
     // かみさまを出現させる
     Kamisama* Spawn();
-
-    // かみさまの退場処理を開始する
-    void BeginExit();
 
     // 退場済みのかみさまを削除する
     void RemoveExited();
@@ -39,12 +47,12 @@ private:
 
     bool CanSpawn() const;
 
+    bool ShouldExit(const Kamisama& kamisama) const;
+
 private:
 
     // Kamisama.prefab.json から Spawn した Actor のスクリプト。Actor はシーンが持つ
     std::vector<Kamisama*> kamisamas_;
 
     std::vector<std::unique_ptr<Lane>> pLanes_;
-
-
 };

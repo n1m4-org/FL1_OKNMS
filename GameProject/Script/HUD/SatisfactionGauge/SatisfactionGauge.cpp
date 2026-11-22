@@ -122,6 +122,11 @@ void SatisfactionGauge::SetDecay(const float value, const float interval)
     decayInterval_ = interval;
 }
 
+bool SatisfactionGauge::IsFull() const 
+{
+    return 100.f <= percentage_;
+}
+
 void SatisfactionGauge::RebuildRings()
 {
     radius_.y = std::max(radius_.x, radius_.y);

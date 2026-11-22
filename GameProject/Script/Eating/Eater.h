@@ -5,6 +5,7 @@
 #include "Script.h"
 
 #include "ActorRef.h"
+#include "Plate.h"
 
 /// <summary>
 /// かみさまが食べる動作
@@ -14,10 +15,7 @@ TCLASS()
 class Eater : public Tako::Script {
     GENERATED_BODY()
 
-    TPROPERTY(Edit, Required, ActorWith = "Plate")
-    Tako::ActorRef plate_;
-
-    TPROPERTY(Edit, Required, ActorWith = "Gauge")
+    TPROPERTY(Edit, Required, ActorWith = "SatisfactionGauge")
     Tako::ActorRef gauge_;
 
     TPROPERTY(Edit)
@@ -33,6 +31,7 @@ class Eater : public Tako::Script {
     TPROPERTY(Edit, Speed = 0.1)
     float percentMul = 1.f;
 
+    Plate* pPlate_ = nullptr;
 
     float elapsed_ = 0.f;
 
@@ -43,7 +42,7 @@ class Eater : public Tako::Script {
     float slideTime_ = 1.f;
     float slideElapsed_ = 0.f;
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
     // デバッグメニュー用（保存しない）
     float debugTargetBpm_ = 120.f;
     float debugSlideTime_ = 1.f;
@@ -54,14 +53,25 @@ class Eater : public Tako::Script {
 
 public: //メンバー関数
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
     bool DrawCustomImGui() override;
 #endif
 
     void Tick(float deltaTime) override;
 
+    void SetPlate(Plate* plate);
+
     void SetTempo(float sec, float time = 1.f);
     void SetTempoFromBpm(float bpm, float time = 1.f);
+
+    /** @brief 食べる状態変更
+     * @param active 食べるかbool
+     */
+    void Activate(bool active);
+
+    bool IsSatisfied() const;
+
+    void SetGaugeVisible(bool visible) const;
 
 private:
     void Eat();
