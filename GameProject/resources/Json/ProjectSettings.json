@@ -7,7 +7,7 @@
         "Height": 1080,
         "Resizable": true,
         "StartFullscreen": false,
-        "TargetFPS": 60,
+        "TargetFPS": 0,
         "VSync": true,
         "Width": 1920
     },
@@ -33,11 +33,17 @@
             1.0
         ],
         "Exposure": 0.0,
+        "FrustumCulling": true,
+        "LocalShadowMapSize": 2048,
         "PCFKernelSize": 3,
         "RenderScale": 1.0,
-        "ShadowBias": 9.999999747378752e-05,
+        "ShadowCascadeCount": 4,
+        "ShadowCascadeSplit": 0.5,
+        "ShadowDepthBias": 1.0,
         "ShadowEnabled": true,
         "ShadowMapSize": 2048,
+        "ShadowNormalBias": 2.0,
+        "ShadowStaggerFarCascades": true,
         "ToneMapping": "None"
     },
     "Time": {

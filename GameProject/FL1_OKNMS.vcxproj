@@ -85,7 +85,8 @@
     <ClCompile Include="Script\system\score\PointTable.cpp" />
     <ClCompile Include="Script\system\score\ScoreManager.cpp" />
     <ClCompile Include="Script\system\score\ScoreView.cpp" />
-    <ClCompile Include="Script\system\TimeLimit.cpp" />
+    <ClCompile Include="Script\system\timelimit\TimeLimit.cpp" />
+    <ClCompile Include="Script\system\timelimit\TimeLimitView.cpp" />
     <ClCompile Include="Source\Director\Lane.cpp" />
     <ClCompile Include="Source\system\EventListener.cpp" />
     <ClCompile Include="Source\system\EventSubscription.cpp" />
@@ -107,7 +108,8 @@
     <ClInclude Include="Script\system\score\PointTable.h" />
     <ClInclude Include="Script\system\score\ScoreManager.h" />
     <ClInclude Include="Script\system\score\ScoreView.h" />
-    <ClInclude Include="Script\system\TimeLimit.h" />
+    <ClInclude Include="Script\system\timelimit\TimeLimit.h" />
+    <ClInclude Include="Script\system\timelimit\TimeLimitView.h" />
     <ClInclude Include="Source\Director\Lane.h" />
     <ClInclude Include="Source\event\TimeLimitEvent.h" />
     <ClInclude Include="Source\system\EventListener.h" />

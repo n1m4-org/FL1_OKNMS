@@ -33,18 +33,11 @@ void TimeLimit::Tick(float deltaTime)
     case State::Paused:
         break;
     }
-
-    // 残り時間を UI に反映する
-    if (isDirty_) UpdateText();
 }
 
 #ifdef TAKO_EDITOR
 bool TimeLimit::DrawCustomImGui()
 {
-    ImGui::Text("Dirty : "); ImGui::SameLine();
-    if (isDirty_) ImGui::TextRed("true");
-    else ImGui::TextGreen("false");
-
     bool start = ImGui::ButtonColored("Start", Tako::ColorHSV(0.66f, 0.7f, 0.7f, 1.0f), ImVec2(60, 25));
     ImGui::SameLine();
     bool pause = ImGui::ButtonColored("Pause", Tako::ColorHSV(0.16f, 0.7f, 0.7f, 1.0f), ImVec2(60, 25));
@@ -73,25 +66,21 @@ void TimeLimit::Reset()
 {
     state_ = State::Ready;
     remainingTime_ = maxLimitTime_;
-    isDirty_ = true;
 }
 
 void TimeLimit::AddRemainingTime(float time)
 {
     remainingTime_ += time;
-    isDirty_ = true;
 }
 
 void TimeLimit::BeginPlay()
 {
     remainingTime_ = maxLimitTime_;
-    isDirty_ = true;
 }
 
 void TimeLimit::DecreaseTime(float time)
 {
     remainingTime_ -= time;
-    isDirty_ = true;
 }
 
 void TimeLimit::CountStopIfFinished()
@@ -99,7 +88,6 @@ void TimeLimit::CountStopIfFinished()
     if (remainingTime_ <= 0.0f)
     {
         remainingTime_ = 0.0f;
-        isDirty_ = true;
         state_ = State::Ready;
     }
 }
@@ -110,19 +98,4 @@ void TimeLimit::PublishEventIfFinished() const
     {
         EventListener::GetInstance()->Publish<Event::TimeUp>({});
     }
-}
-
-void TimeLimit::UpdateText()
-{
-    UILayoutComponent* ulc = GetOwner()->GetComponent<UILayoutComponent>();
-
-    /// 残り時間を分と秒に変換して表示する
-    float remainingMin = remainingTime_ / 60.0f;
-    remainingMin = std::floor(remainingMin);
-    float remainingSec = remainingTime_ - static_cast<int>(remainingMin) * 60.0f;
-    remainingSec = std::floor(remainingSec);
-
-    /// UI に残り時間を反映する (秒は 0埋め 2桁表示にする)
-    ulc->GetLayout().SetText("Time", std::format("{}:{:02}", remainingMin, remainingSec));
-    isDirty_ = false;
 }

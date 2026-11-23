@@ -39,7 +39,6 @@ public:
     // 残り時間の追加
     void AddRemainingTime(float time);
 
-
 private:
     // 残り時間をへらす
     void DecreaseTime(float time);
@@ -48,9 +47,6 @@ private:
     void CountStopIfFinished();
 
     void PublishEventIfFinished() const;
-
-    // テキストの更新
-    void UpdateText();
 
 
     TPROPERTY(Edit, ClampMin = 0)
@@ -61,8 +57,4 @@ private:
 
     TPROPERTY(Visible)
     State state_ = State::Ready; 
-
-
-    // UI に反映するかどうかのフラグ。残り時間が変わったら true にする
-    bool isDirty_ = false;
 };

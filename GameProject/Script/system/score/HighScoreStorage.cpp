@@ -25,13 +25,13 @@ void HighScoreStorage::SaveHighScoreTable() const
     const fs::path kPath = fs::path(tableDirectoryPath_) / tableFileName_;
     const std::string kPathString = kPath.generic_string();
 
-    GameLog::Info(*this, "Saving high scores to \"{}\"", kPathString);
+    GameLog::Info(*this, "ハイスコアの保存を開始します。 \"{}\"", kPathString);
 
     /// アクタの解決
     auto actor = GetOwner()->Resolve(tableActor_);
     if (!actor)
     {
-        GameLog::Error(*this, "Could not resolve the table actor. (Check \"tableActor\" in the inspector)");
+        GameLog::Error(*this, "HighScoreTableアクターの解決に失敗しました。(インスペクターで \"tableActor\" が設定されているか確認してください。)");
         return;
     }
 
@@ -39,7 +39,7 @@ void HighScoreStorage::SaveHighScoreTable() const
     auto table = actor->GetScript<HighScoreTable>();
     if (!table)
     {
-        GameLog::Error(*this, "Actor \"{}\" has no HighScoreTable script", actor->GetName());
+        GameLog::Error(*this, "\"{}\"アクター has no HighScoreTable script", actor->GetName());
         return;
     }
 
@@ -48,7 +48,7 @@ void HighScoreStorage::SaveHighScoreTable() const
     std::filesystem::create_directories(tableDirectoryPath_, ec);
     if (ec)
     {
-        GameLog::Error(*this, "Failed to create directory \"{}\": {}", kPath.parent_path().generic_string(), ec.message());
+        GameLog::Error(*this, "ディレクトリの作成に失敗しました。 \"{}\": {}", kPath.parent_path().generic_string(), ec.message());
         return;
     }
 
@@ -56,7 +56,7 @@ void HighScoreStorage::SaveHighScoreTable() const
     std::ofstream ofs(tableDirectoryPath_ + tableFileName_);
     if (!ofs.is_open())
     {
-        GameLog::Error(*this, "Failed to open \"{}\" for writing ", kPathString);
+        GameLog::Error(*this, "書き込みに失敗しました。 ファイルを開けません。 \"{}\"", kPathString);
         return;
     }
 
@@ -66,13 +66,13 @@ void HighScoreStorage::SaveHighScoreTable() const
 
     if (ofs.fail())
     {
-        GameLog::Error(*this, "Failed to write high scores to \"{}\"", kPathString);
+        GameLog::Error(*this, "ハイスコアの書き込みに失敗しました。 \"{}\"", kPathString);
         ofs.close();
         return;
     }
     ofs.close();
 
-    GameLog::Info(*this, "Saved {} high scores to \"{}\"", table->size(), kPathString);
+    GameLog::Info(*this, "{} の high scores を保存しました。保存場所 : \"{}\"", table->size(), kPathString);
 }
 
 void HighScoreStorage::LoadHighScoreTable()
@@ -84,7 +84,7 @@ void HighScoreStorage::LoadHighScoreTable()
     auto actor = GetOwner()->Resolve(tableActor_);
     if (!actor)
     {
-        GameLog::Error(*this, "Could not resolve the table actor. (Check \"tableActor\" in the inspector)");
+        GameLog::Error(*this, "HighScoreTableアクターの解決に失敗しました。(インスペクターで \"tableActor\" が設定されているか確認してください。)");
         return;
     }
 
@@ -92,7 +92,7 @@ void HighScoreStorage::LoadHighScoreTable()
     auto table = actor->GetScript<HighScoreTable>();
     if (!table)
     {
-        GameLog::Error(*this, "Actor \"{}\" has no HighScoreTable script", actor->GetName());
+        GameLog::Error(*this, "\"{}\"アクター has no HighScoreTable script", actor->GetName());
         return;
     }
 
@@ -100,7 +100,7 @@ void HighScoreStorage::LoadHighScoreTable()
     std::ifstream ifs(tableDirectoryPath_ + tableFileName_);
     if (!ifs.is_open())
     {
-        GameLog::Error(*this, "Failed to open \"{}\" for reading ", kPathString);
+        GameLog::Error(*this, "読み込みに失敗しました。 ファイルを開けません。 \"{}\"", kPathString);
         return;
     }
 
@@ -109,7 +109,7 @@ void HighScoreStorage::LoadHighScoreTable()
     ifs >> j;
     if (ifs.fail())
     {
-        GameLog::Error(*this, "Failed to load high scores to \"{}\"", kPathString);
+        GameLog::Error(*this, "ハイスコアの読み込みに失敗しました。 \"{}\"", kPathString);
         ifs.close();
         return;
     }
@@ -118,5 +118,5 @@ void HighScoreStorage::LoadHighScoreTable()
     /// JSONからハイスコアテーブルを復元する
     table->FromJSON(j);
 
-    GameLog::Info(*this, "Loaded {} high scores from \"{}\"", table->size(), kPathString);
+    GameLog::Info(*this, "{} の high scores を復元しました。保存場所 : \"{}\"", table->size(), kPathString);
 }
