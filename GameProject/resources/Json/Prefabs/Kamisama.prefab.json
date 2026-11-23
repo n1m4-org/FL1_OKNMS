@@ -1,33 +1,39 @@
 {
   "actors": [
     {
-      "type": "Actor",
-      "id": 1,
-      "properties": {
-        "active": true,
-        "name": "Kamisama",
-        "tags": [],
-        "transform": {
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "translate": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
       "components": {
+        "AudioSourceComponent": {
+          "order": 3,
+          "properties": {
+            "loop": false,
+            "playOnStart": false,
+            "sound": "se_kamisama_eat.wav",
+            "volume": 0.20000000298023224
+          },
+          "type": "AudioSourceComponent"
+        },
+        "Eater": {
+          "order": 2,
+          "properties": {
+            "active": false,
+            "amount": 5.400000095367432,
+            "gauge": {
+              "actor": 2
+            },
+            "interval": 1.600000023841858,
+            "percentMul": 1.0,
+            "script": "Eater"
+          },
+          "type": "ScriptComponent"
+        },
+        "Kamisama": {
+          "order": 1,
+          "properties": {
+            "script": "Kamisama"
+          },
+          "type": "ScriptComponent"
+        },
         "MeshComponent": {
-          "type": "MeshComponent",
           "order": 0,
           "properties": {
             "model": "EngineResources/Model/white_cube.gltf",
@@ -59,43 +65,85 @@
               }
             },
             "visible": true
-          }
-        },
-        "Kamisama": {
-          "type": "ScriptComponent",
-          "order": 1,
-          "properties": {
-            "script": "Kamisama"
-          }
-        },
-        "Eater": {
-          "type": "ScriptComponent",
-          "order": 2,
-          "properties": {
-            "active": false,
-            "amount": 5.400000095367432,
-            "gauge": {
-              "actor": 2
-            },
-            "interval": 1.600000023841858,
-            "percentMul": 1.0,
-            "script": "Eater"
-          }
-        },
-        "AudioSourceComponent": {
-          "type": "AudioSourceComponent",
-          "order": 3,
-          "properties": {
-            "loop": false,
-            "playOnStart": false,
-            "sound": "kick.wav",
-            "volume": 0.8399999737739563
-          }
+          },
+          "type": "MeshComponent"
         }
-      }
+      },
+      "id": 1,
+      "properties": {
+        "active": true,
+        "name": "Kamisama",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
     },
     {
-      "type": "Actor",
+      "components": {
+        "MeshComponent": {
+          "order": 0,
+          "properties": {
+            "model": "",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "renderSettings": {
+              "CastShadow": false,
+              "Values": {
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "enableLighting": 0
+              }
+            },
+            "visible": true
+          },
+          "type": "MeshComponent"
+        },
+        "SatisfactionGauge": {
+          "order": 1,
+          "properties": {
+            "background": {
+              "actor": 3
+            },
+            "script": "SatisfactionGauge"
+          },
+          "type": "ScriptComponent"
+        }
+      },
       "id": 2,
       "parent": 1,
       "properties": {
@@ -103,15 +151,15 @@
         "name": "SatisfactionGauge",
         "tags": [],
         "transform": {
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
           "rotate": [
             0.0,
             0.0,
             0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
           ],
           "translate": [
             0.0,
@@ -120,9 +168,11 @@
           ]
         }
       },
+      "type": "Actor"
+    },
+    {
       "components": {
         "MeshComponent": {
-          "type": "MeshComponent",
           "order": 0,
           "properties": {
             "model": "",
@@ -147,31 +197,19 @@
               "CastShadow": false,
               "Values": {
                 "color": [
-                  1.0,
-                  1.0,
-                  1.0,
+                  0.6627451,
+                  0.6627451,
+                  0.6627451,
                   1.0
                 ],
                 "enableLighting": 0
               }
             },
             "visible": true
-          }
-        },
-        "SatisfactionGauge": {
-          "type": "ScriptComponent",
-          "order": 1,
-          "properties": {
-            "background": {
-              "actor": 3
-            },
-            "script": "SatisfactionGauge"
-          }
+          },
+          "type": "MeshComponent"
         }
-      }
-    },
-    {
-      "type": "Actor",
+      },
       "id": 3,
       "parent": 2,
       "properties": {
@@ -179,15 +217,15 @@
         "name": "Background",
         "tags": [],
         "transform": {
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
           "rotate": [
             0.0,
             0.0,
             0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
           ],
           "translate": [
             0.0,
@@ -196,45 +234,7 @@
           ]
         }
       },
-      "components": {
-        "MeshComponent": {
-          "type": "MeshComponent",
-          "order": 0,
-          "properties": {
-            "model": "",
-            "offset": {
-              "rotate": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "scale": [
-                1.0,
-                1.0,
-                1.0
-              ],
-              "translate": [
-                0.0,
-                0.0,
-                0.0
-              ]
-            },
-            "renderSettings": {
-              "CastShadow": false,
-              "Values": {
-                "color": [
-                  0.6627451,
-                  0.6627451,
-                  0.6627451,
-                  1.0
-                ],
-                "enableLighting": 0
-              }
-            },
-            "visible": true
-          }
-        }
-      }
+      "type": "Actor"
     }
   ]
 }
