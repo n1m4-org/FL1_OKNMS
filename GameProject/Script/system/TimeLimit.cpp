@@ -115,6 +115,14 @@ void TimeLimit::PublishEventIfFinished() const
 void TimeLimit::UpdateText()
 {
     UILayoutComponent* ulc = GetOwner()->GetComponent<UILayoutComponent>();
-    ulc->GetLayout().SetText("Time", std::to_string(static_cast<int>(remainingTime_)));
+
+    /// 残り時間を分と秒に変換して表示する
+    float remainingMin = remainingTime_ / 60.0f;
+    remainingMin = std::floor(remainingMin);
+    float remainingSec = remainingTime_ - static_cast<int>(remainingMin) * 60.0f;
+    remainingSec = std::floor(remainingSec);
+
+    /// UI に残り時間を反映する (秒は 0埋め 2桁表示にする)
+    ulc->GetLayout().SetText("Time", std::format("{}:{:02}", remainingMin, remainingSec));
     isDirty_ = false;
 }
