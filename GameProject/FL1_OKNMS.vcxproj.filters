@@ -52,6 +52,9 @@
     <ClCompile Include="Source\Director\Lane.cpp">
       <Filter>Source\Director</Filter>
     </ClCompile>
+    <ClCompile Include="Source\system\EventListener.cpp">
+      <Filter>Source\system</Filter>
+    </ClCompile>
     <ClCompile Include="Source\system\EventSubscription.cpp">
       <Filter>Source\system</Filter>
     </ClCompile>
@@ -60,10 +63,6 @@
     </ClCompile>
     <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp">
       <Filter>Source\utility\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
-    <ClCompile Include="Source\system\EventListener.cpp">
-      <Filter>Source\system</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
