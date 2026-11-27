@@ -310,6 +310,19 @@ void MiconConnection::Tick(float deltaTime)
                 state_ = State::Searching;
                 Tako::Logger::Log("Micon Disconnected");
             }
+
+            DWORD   errors = 0;
+            COMSTAT status{};
+            if (!ClearCommError(handle_, &errors, &status))
+            {
+                const DWORD error = GetLastError();   // すぐ取る
+                // 抜けた → ログ、Close、Searching へ
+
+                Close();
+                state_ = State::Searching;
+                Tako::Logger::Log("Micon Disconnected");
+                Tako::Logger::Log("ClearCommError failed: error %lu", error);
+            }
             break;
         }
     }
