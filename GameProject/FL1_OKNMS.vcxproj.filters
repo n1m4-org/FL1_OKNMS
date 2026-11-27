@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="Script\system\MicroController\MiconConnection.cpp">
+      <Filter>Script\system\MicroController</Filter>
+    </ClCompile>
     <ClCompile Include="Script\system\event\TimeUp.cpp">
       <Filter>Script\system\event</Filter>
     </ClCompile>
@@ -49,14 +52,18 @@
     <ClCompile Include="Source\Director\Lane.cpp">
       <Filter>Source\Director</Filter>
     </ClCompile>
-    <ClCompile Include="Source\system\EventListener.cpp">
-      <Filter>Source\system</Filter>
-    </ClCompile>
     <ClCompile Include="Source\system\EventSubscription.cpp">
       <Filter>Source\system</Filter>
     </ClCompile>
+    <ClCompile Include="Source\system\Microcontroller\MiconParse.cpp">
+      <Filter>Source\system\Microcontroller</Filter>
+    </ClCompile>
     <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp">
       <Filter>Source\utility\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
+    <ClCompile Include="Source\system\EventListener.cpp">
+      <Filter>Source\system</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,14 +112,23 @@
     <Filter Include="Script\system\event">
       <UniqueIdentifier>{e7c7e038-e9dd-4379-ad0e-cbf6fa1f7f2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Script\system\MicroController">
+      <UniqueIdentifier>{4bffa48f-06ef-4657-a176-889e0e43fdf7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Script\system\score">
       <UniqueIdentifier>{7944449f-7bbb-4074-9ae7-0f0ae52bded0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\system\Microcontroller">
+      <UniqueIdentifier>{fb8f8196-07ea-409d-92a3-b4728564be94}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\utility\imgui">
       <UniqueIdentifier>{d9b4b6fa-9590-4b08-b55e-37e36c4f09c1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Script\system\MicroController\MiconConnection.h">
+      <Filter>Script\system\MicroController</Filter>
+    </ClInclude>
     <ClInclude Include="Script\system\event\TimeUp.h">
       <Filter>Script\system\event</Filter>
     </ClInclude>
@@ -172,6 +188,12 @@
     </ClInclude>
     <ClInclude Include="Source\system\EventSubscription.h">
       <Filter>Source\system</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\system\Microcontroller\MiconMessage.h">
+      <Filter>Source\system\Microcontroller</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\system\Microcontroller\MiconParse.h">
+      <Filter>Source\system\Microcontroller</Filter>
     </ClInclude>
     <ClInclude Include="Source\type\Combo.h">
       <Filter>Source\type</Filter>
