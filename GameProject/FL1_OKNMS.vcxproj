@@ -58,6 +58,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Script\system\MicroController\MiconConnection.cpp" />
     <ClCompile Include="Script\Director\KamisamaDirector.cpp" />
     <ClCompile Include="Script\Entity\Kamisama.cpp" />
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
@@ -65,8 +66,10 @@
     <ClCompile Include="Source\Director\Lane.cpp" />
     <ClCompile Include="Source\system\EventListener.cpp" />
     <ClCompile Include="Source\system\EventSubscription.cpp" />
+    <ClCompile Include="Source\system\Microcontroller\MiconParse.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Script\system\MicroController\MiconConnection.h" />
     <ClInclude Include="Script\Director\KamisamaDirector.h" />
     <ClInclude Include="Script\Entity\Kamisama.h" />
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />
@@ -74,6 +77,8 @@
     <ClInclude Include="Source\Director\Lane.h" />
     <ClInclude Include="Source\system\EventListener.h" />
     <ClInclude Include="Source\system\EventSubscription.h" />
+    <ClInclude Include="Source\system\Microcontroller\MiconMessage.h" />
+    <ClInclude Include="Source\system\Microcontroller\MiconParse.h" />
   </ItemGroup>
   <!-- エンジンが無い（clone した直後など）と設定ファイルを読めないので、ビルドの最初に、やることを伝えて止める。
        Visual Studio が裏で行う設計時ビルドでは出さない（プロジェクトを開いただけでエラーが並ばないように） -->

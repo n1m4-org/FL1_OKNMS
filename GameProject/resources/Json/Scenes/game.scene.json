@@ -1,33 +1,28 @@
 {
   "actors": [
     {
-      "type": "Actor",
-      "id": 1,
-      "properties": {
-        "name": "SatisfactionGauge",
-        "transform": {
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "translate": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
       "components": {
         "MeshComponent": {
-          "type": "MeshComponent",
           "order": 0,
           "properties": {
+            "model": "",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
             "renderSettings": {
               "CastShadow": false,
               "Values": {
@@ -39,37 +34,37 @@
                 ],
                 "enableLighting": 0
               }
-            }
-          }
+            },
+            "visible": true
+          },
+          "type": "MeshComponent"
         },
         "SatisfactionGauge": {
-          "type": "ScriptComponent",
           "order": 1,
           "properties": {
             "background": {
               "actor": 2
             },
             "script": "SatisfactionGauge"
-          }
+          },
+          "type": "ScriptComponent"
         }
-      }
-    },
-    {
-      "type": "Actor",
-      "id": 2,
-      "parent": 1,
+      },
+      "id": 1,
       "properties": {
-        "name": "Background",
+        "active": true,
+        "name": "SatisfactionGauge",
+        "tags": [],
         "transform": {
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
           "rotate": [
             0.0,
             0.0,
             0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
           ],
           "translate": [
             0.0,
@@ -78,11 +73,31 @@
           ]
         }
       },
+      "type": "Actor"
+    },
+    {
       "components": {
         "MeshComponent": {
-          "type": "MeshComponent",
           "order": 0,
           "properties": {
+            "model": "",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
             "renderSettings": {
               "CastShadow": false,
               "Values": {
@@ -94,27 +109,82 @@
                 ],
                 "enableLighting": 0
               }
-            }
-          }
+            },
+            "visible": true
+          },
+          "type": "MeshComponent"
         }
-      }
+      },
+      "id": 2,
+      "parent": 1,
+      "properties": {
+        "active": true,
+        "name": "Background",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
     },
     {
-      "type": "Actor",
+      "components": {
+        "MeshComponent": {
+          "order": 0,
+          "properties": {
+            "model": "plane.obj",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "visible": true
+          },
+          "type": "MeshComponent"
+        }
+      },
       "id": 3,
       "properties": {
+        "active": true,
         "name": "Floor",
+        "tags": [],
         "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
           "scale": [
             100.0,
             1.0,
             100.0
           ],
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
           "translate": [
             0.0,
             0.0,
@@ -122,64 +192,33 @@
           ]
         }
       },
-      "components": {
-        "MeshComponent": {
-          "type": "MeshComponent",
-          "order": 0,
-          "properties": {
-            "model": "plane.obj"
-          }
-        }
-      }
+      "type": "Actor"
     },
     {
-      "type": "Actor",
-      "id": 4,
-      "properties": {
-        "name": "KamisamaDirector",
-        "transform": {
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "translate": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
       "components": {
         "KamisamaDirector": {
-          "type": "ScriptComponent",
           "order": 0,
           "properties": {
             "script": "KamisamaDirector"
-          }
+          },
+          "type": "ScriptComponent"
         }
-      }
-    },
-    {
-      "type": "Actor",
-      "id": 5,
+      },
+      "id": 4,
       "properties": {
-        "name": "EventDispatcher",
+        "active": true,
+        "name": "KamisamaDirector",
+        "tags": [],
         "transform": {
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
           "rotate": [
             0.0,
             0.0,
             0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
           ],
           "translate": [
             0.0,
@@ -188,15 +227,77 @@
           ]
         }
       },
+      "type": "Actor"
+    },
+    {
       "components": {
         "EventDispatcher": {
-          "type": "ScriptComponent",
           "order": 0,
           "properties": {
             "script": "EventDispatcher"
-          }
+          },
+          "type": "ScriptComponent"
         }
-      }
+      },
+      "id": 5,
+      "properties": {
+        "active": true,
+        "name": "EventDispatcher",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "MiconConnection"
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 6,
+      "properties": {
+        "active": true,
+        "name": "MiconConnection",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
     }
   ]
 }
