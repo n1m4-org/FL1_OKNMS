@@ -71,7 +71,6 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Script\system\MicroController\MiconConnection.cpp" />
     <ClCompile Include="Script\system\event\TimeUp.cpp" />
     <ClCompile Include="Script\Eating\Plate.cpp" />
     <ClCompile Include="Script\Eating\Eater.cpp" />
@@ -90,11 +89,9 @@
     <ClCompile Include="Source\Director\Lane.cpp" />
     <ClCompile Include="Source\system\EventListener.cpp" />
     <ClCompile Include="Source\system\EventSubscription.cpp" />
-    <ClCompile Include="Source\system\Microcontroller\MiconParse.cpp" />
     <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Script\system\MicroController\MiconConnection.h" />
     <ClInclude Include="Script\system\event\TimeUp.h" />
     <ClInclude Include="Script\Eating\Plate.h" />
     <ClInclude Include="Script\Eating\Eater.h" />
@@ -115,8 +112,6 @@
     <ClInclude Include="Source\event\TimeLimitEvent.h" />
     <ClInclude Include="Source\system\EventListener.h" />
     <ClInclude Include="Source\system\EventSubscription.h" />
-    <ClInclude Include="Source\system\Microcontroller\MiconMessage.h" />
-    <ClInclude Include="Source\system\Microcontroller\MiconParse.h" />
     <ClInclude Include="Source\type\Combo.h" />
     <ClInclude Include="Source\type\Score.h" />
     <ClInclude Include="Source\utility\GameLog.h" />
