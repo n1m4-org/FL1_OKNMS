@@ -765,42 +765,6 @@
         }
       },
       "type": "Actor"
-    },
-    {
-      "components": {
-        "Script": {
-          "order": 0,
-          "properties": {
-            "script": "MiconConnection"
-          },
-          "type": "ScriptComponent"
-        }
-      },
-      "id": 23,
-      "parent": 18,
-      "properties": {
-        "active": true,
-        "name": "MiconConnection",
-        "tags": [],
-        "transform": {
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "translate": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "type": "Actor"
     }
   ]
 }
