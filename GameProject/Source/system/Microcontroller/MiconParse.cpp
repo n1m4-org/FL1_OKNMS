@@ -7,15 +7,15 @@ namespace
     constexpr std::string_view kIrRight = "IRR";   // 右の赤外線センサーが反応
 }
 
-std::optional<MiconSensorEvent> MiconParser::Parse(std::string_view line)
+std::optional<Event::MiconSensorEvent> MiconParser::Parse(std::string_view line)
 {
     if (line == kIrLeft)
     {
-        return MiconSensorEvent{ MiconIrSide::Left };
+        return Event::MiconSensorEvent{ MiconIrSide::Left };
     }
     else if (line == kIrRight)
     {
-        return MiconSensorEvent{ MiconIrSide::Right };
+        return Event::MiconSensorEvent{ MiconIrSide::Right };
     }
 
     return std::nullopt;

@@ -1,10 +1,10 @@
 #include "MiconConnection.h"
 
 #include <Windows.h>
-#include <Logger.h>
 
 #include <Source/system/Microcontroller/MiconParse.h>
 #include <Source/system/EventListener.h>
+#include <utility/GameLog.h>
 
 namespace
 {
@@ -69,7 +69,7 @@ void MiconConnection::HandleLine(const std::string& str)
         if (state_ != State::Connected)
         {
             // 不要なログを出さないように、Connected になったときだけログを出す
-            Tako::Logger::Log("Micon Connected");
+            GameLog::Info(*this, "Micon connected on {}", portName_);
             state_ = State::Connected;
         }
         return;
@@ -82,12 +82,12 @@ void MiconConnection::HandleLine(const std::string& str)
     {
         EventListener::GetInstance()->Publish(*result);
         // デバッグ用ログ
-        Tako::Logger::Log("Micon Event : %s", str.c_str());
+        GameLog::Info(*this, "Micon event: {}", str);
     }
     else
     {
         // 解釈できない文字列 ログに出す
-        Tako::Logger::Log("Unknown line : [%s]", str.c_str());
+        GameLog::Warning(*this, "Unknown line: [{}]", str);
     }
 }
 
@@ -114,9 +114,9 @@ bool MiconConnection::Open(const std::string& portName)
 
     if (handle_ == INVALID_HANDLE_VALUE)
     {
-        // handleの取得に失敗した
-        Tako::Logger::Log("%lu", GetLastError());
-        Tako::Logger::Log("handleの取得に失敗");
+        // handleの取得に失敗した（他のアプリが使っている等。探している途中なので Warning）
+        const DWORD error = GetLastError();
+        GameLog::Warning(*this, "Failed to open {} (error {})", portName, error);
         return false;
     }
 
@@ -125,8 +125,8 @@ bool MiconConnection::Open(const std::string& portName)
     dcb.DCBlength = sizeof(dcb);
     if (!GetCommState(handle_, &dcb))
     {
-        Tako::Logger::Log("%lu", GetLastError());
-        Tako::Logger::Log("ComStateの取得に失敗");
+        const DWORD error = GetLastError();
+        GameLog::Error(*this, "GetCommState failed on {} (error {})", portName, error);
         Close();
         return false;
     }
@@ -138,8 +138,8 @@ bool MiconConnection::Open(const std::string& portName)
     // DTR信号:PC側の準備完了信号
     if (!SetCommState(handle_, &dcb))
     {
-        Tako::Logger::Log("%lu", GetLastError());
-        Tako::Logger::Log("ComStateの設定に失敗");
+        const DWORD error = GetLastError();
+        GameLog::Error(*this, "SetCommState failed on {} (error {})", portName, error);
         Close();
         return false;
     }
@@ -158,7 +158,7 @@ bool MiconConnection::Open(const std::string& portName)
 
     line_.clear();
     portName_ = portName;
-    Tako::Logger::Log("Open %s", portName_.c_str());
+    GameLog::Info(*this, "Opened {}", portName_);
     return true;
 }
 
@@ -174,7 +174,8 @@ bool MiconConnection::ReadLines()
         DWORD bytesRead = 0;
         if (!ReadFile(handle_, buf, sizeof(buf), &bytesRead, nullptr))
         {
-            Tako::Logger::Log("read failed: error %lu", GetLastError());  // USB が抜けた等
+            const DWORD error = GetLastError();
+            GameLog::Warning(*this, "ReadFile failed on {} (error {})", portName_, error);  // USB が抜けた等
             return false;
         }
         if (bytesRead == 0)
@@ -235,7 +236,7 @@ std::vector<std::string> MiconConnection::GetSerialPortList() const
         portList.push_back(portName);
 
         // deviceName = "\Device\USBSER000"、portName = "COM11"
-        Tako::Logger::Log("%s = %s", deviceName, portName);
+        GameLog::Info(*this, "Found serial port {} = {}", deviceName, portName);
     }
 
     RegCloseKey(hKey);
@@ -308,7 +309,7 @@ void MiconConnection::Tick(float deltaTime)
             {
                 Close();
                 state_ = State::Searching;
-                Tako::Logger::Log("Micon Disconnected");
+                GameLog::Warning(*this, "Micon disconnected from {} (read failed)", portName_);
             }
 
             DWORD   errors = 0;
@@ -320,8 +321,7 @@ void MiconConnection::Tick(float deltaTime)
 
                 Close();
                 state_ = State::Searching;
-                Tako::Logger::Log("Micon Disconnected");
-                Tako::Logger::Log("ClearCommError failed: error %lu", error);
+                GameLog::Warning(*this, "Micon disconnected from {} (ClearCommError failed, error {})", portName_, error);
             }
             break;
         }

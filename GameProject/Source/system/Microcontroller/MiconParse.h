@@ -13,7 +13,7 @@ public:
     MiconParser() = default;
     ~MiconParser() = default;
 
-   static std::optional<MiconSensorEvent> Parse(std::string_view line);
+   static std::optional<Event::MiconSensorEvent> Parse(std::string_view line);
 
 private:
 

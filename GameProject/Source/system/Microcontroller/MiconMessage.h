@@ -6,8 +6,10 @@ enum class MiconIrSide
     Right,
 };
 
-
-struct MiconSensorEvent
+namespace Event
 {
-    MiconIrSide side;
+    struct MiconSensorEvent
+    {
+        MiconIrSide side;
+    };
 };

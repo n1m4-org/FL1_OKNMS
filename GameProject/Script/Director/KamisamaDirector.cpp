@@ -3,7 +3,6 @@
 
 #include <Actor.h>
 #include <BaseScene.h>
-#include <Logger.h>
 #include <RandomEngine.h>
 
 // 仮
@@ -11,6 +10,7 @@
 
 #include "Script/Entity/Kamisama.h"
 #include "Eating/Plate.h"
+#include <utility/GameLog.h>
 
 #ifdef TAKO_EDITOR
 #include "imgui.h"
@@ -119,7 +119,7 @@ Kamisama* KamisamaDirector::Spawn()
     Kamisama* kamisama = actor ? actor->GetScript<Kamisama>() : nullptr;
     if (!kamisama)
     {
-        Tako::Logger::Log("KamisamaDirector: the prefab \"%s\" is missing or has no Kamisama script\n", kKamisamaPrefab);
+        GameLog::Error(*this, "The prefab \"{}\" is missing or has no Kamisama script", kKamisamaPrefab);
         if (actor)
         {
             actor->Destroy();
