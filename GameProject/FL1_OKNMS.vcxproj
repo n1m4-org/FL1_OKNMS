@@ -5,6 +5,10 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Develop|x64">
+      <Configuration>Develop</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
@@ -18,10 +22,16 @@
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <!-- Debug はエディタ（TakoEditor.exe）が読む DLL、Release は 1 つの exe -->
+  <!-- Debug と Develop はエディタ（TakoEditor.exe）が読む DLL、Release は 1 つの exe -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Develop|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -42,7 +52,10 @@
     <Import Project="..\Engine\TakoEngine\build\TakoEngineGame.props" Condition="exists('$(MSBuildProjectDirectory)\..\Engine\TakoEngine\build\TakoEngineGame.props')" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <!-- Debug の出力名（Game.dll）はエンジンの props が決める -->
+  <PropertyGroup>
+    <IncludePath>$(ProjectDir)Source;$(ProjectDir)Script;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <!-- Debug と Develop の出力名（Game.dll）はエンジンの props が決める -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>4304_Title</TargetName>
   </PropertyGroup>
@@ -59,26 +72,55 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Script\system\MicroController\MiconConnection.cpp" />
+    <ClCompile Include="Script\system\event\TimeUp.cpp" />
+    <ClCompile Include="Script\Eating\Plate.cpp" />
+    <ClCompile Include="Script\Eating\Eater.cpp" />
     <ClCompile Include="Script\Director\KamisamaDirector.cpp" />
     <ClCompile Include="Script\Entity\Kamisama.cpp" />
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp" />
-    <ClCompile Include="Script\system\EventDispatcher.cpp" />
+    <ClCompile Include="Script\system\combo\ComboManager.cpp" />
+    <ClCompile Include="Script\system\combo\ComboView.cpp" />
+    <ClCompile Include="Script\system\event\EventDispatcher.cpp" />
+    <ClCompile Include="Script\system\score\HighScoreStorage.cpp" />
+    <ClCompile Include="Script\system\score\HighScoreTable.cpp" />
+    <ClCompile Include="Script\system\score\PointTable.cpp" />
+    <ClCompile Include="Script\system\score\ScoreManager.cpp" />
+    <ClCompile Include="Script\system\score\ScoreView.cpp" />
+    <ClCompile Include="Script\system\TimeLimit.cpp" />
     <ClCompile Include="Source\Director\Lane.cpp" />
     <ClCompile Include="Source\system\EventListener.cpp" />
     <ClCompile Include="Source\system\EventSubscription.cpp" />
     <ClCompile Include="Source\system\Microcontroller\MiconParse.cpp" />
+    <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\system\MicroController\MiconConnection.h" />
+    <ClInclude Include="Script\system\event\TimeUp.h" />
+    <ClInclude Include="Script\Eating\Plate.h" />
+    <ClInclude Include="Script\Eating\Eater.h" />
     <ClInclude Include="Script\Director\KamisamaDirector.h" />
     <ClInclude Include="Script\Entity\Kamisama.h" />
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h" />
-    <ClInclude Include="Script\system\EventDispatcher.h" />
+    <ClInclude Include="Script\system\combo\ComboManager.h" />
+    <ClInclude Include="Script\system\combo\ComboView.h" />
+    <ClInclude Include="Script\system\event\EventDispatcher.h" />
+    <ClInclude Include="Script\system\score\HighScoreStorage.h" />
+    <ClInclude Include="Script\system\score\HighScoreTable.h" />
+    <ClInclude Include="Script\system\score\PointAction.h" />
+    <ClInclude Include="Script\system\score\PointTable.h" />
+    <ClInclude Include="Script\system\score\ScoreManager.h" />
+    <ClInclude Include="Script\system\score\ScoreView.h" />
+    <ClInclude Include="Script\system\TimeLimit.h" />
     <ClInclude Include="Source\Director\Lane.h" />
+    <ClInclude Include="Source\event\TimeLimitEvent.h" />
     <ClInclude Include="Source\system\EventListener.h" />
     <ClInclude Include="Source\system\EventSubscription.h" />
     <ClInclude Include="Source\system\Microcontroller\MiconMessage.h" />
     <ClInclude Include="Source\system\Microcontroller\MiconParse.h" />
+    <ClInclude Include="Source\type\Combo.h" />
+    <ClInclude Include="Source\type\Score.h" />
+    <ClInclude Include="Source\utility\GameLog.h" />
+    <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h" />
   </ItemGroup>
   <!-- エンジンが無い（clone した直後など）と設定ファイルを読めないので、ビルドの最初に、やることを伝えて止める。
        Visual Studio が裏で行う設計時ビルドでは出さない（プロジェクトを開いただけでエラーが並ばないように） -->

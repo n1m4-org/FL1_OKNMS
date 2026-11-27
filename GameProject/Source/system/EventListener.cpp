@@ -13,6 +13,7 @@ void EventListener::Dispatch()
         {
             if (handler) handler(publisherData);
         }
+        if (onDispatchedCb_) onDispatchedCb_(publisherData.type().name());
     }
 
     // イベントキューをクリア

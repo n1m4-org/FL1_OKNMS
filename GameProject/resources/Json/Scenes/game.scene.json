@@ -5,147 +5,6 @@
         "MeshComponent": {
           "order": 0,
           "properties": {
-            "model": "",
-            "offset": {
-              "rotate": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "scale": [
-                1.0,
-                1.0,
-                1.0
-              ],
-              "translate": [
-                0.0,
-                0.0,
-                0.0
-              ]
-            },
-            "renderSettings": {
-              "CastShadow": false,
-              "Values": {
-                "color": [
-                  1.0,
-                  1.0,
-                  1.0,
-                  1.0
-                ],
-                "enableLighting": 0
-              }
-            },
-            "visible": true
-          },
-          "type": "MeshComponent"
-        },
-        "SatisfactionGauge": {
-          "order": 1,
-          "properties": {
-            "background": {
-              "actor": 2
-            },
-            "script": "SatisfactionGauge"
-          },
-          "type": "ScriptComponent"
-        }
-      },
-      "id": 1,
-      "properties": {
-        "active": true,
-        "name": "SatisfactionGauge",
-        "tags": [],
-        "transform": {
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "translate": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "type": "Actor"
-    },
-    {
-      "components": {
-        "MeshComponent": {
-          "order": 0,
-          "properties": {
-            "model": "",
-            "offset": {
-              "rotate": [
-                0.0,
-                0.0,
-                0.0
-              ],
-              "scale": [
-                1.0,
-                1.0,
-                1.0
-              ],
-              "translate": [
-                0.0,
-                0.0,
-                0.0
-              ]
-            },
-            "renderSettings": {
-              "CastShadow": false,
-              "Values": {
-                "color": [
-                  0.3,
-                  0.3,
-                  0.3,
-                  1.0
-                ],
-                "enableLighting": 0
-              }
-            },
-            "visible": true
-          },
-          "type": "MeshComponent"
-        }
-      },
-      "id": 2,
-      "parent": 1,
-      "properties": {
-        "active": true,
-        "name": "Background",
-        "tags": [],
-        "transform": {
-          "rotate": [
-            0.0,
-            0.0,
-            0.0
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            1.0
-          ],
-          "translate": [
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "type": "Actor"
-    },
-    {
-      "components": {
-        "MeshComponent": {
-          "order": 0,
-          "properties": {
             "model": "plane.obj",
             "offset": {
               "rotate": [
@@ -164,12 +23,42 @@
                 0.0
               ]
             },
+            "renderSettings": {
+              "Meshes": {
+                "plane_0": {
+                  "Textures": {
+                    "gTexture": "sample/Brick_Red.png"
+                  },
+                  "Values": {
+                    "uvTransform": [
+                      10.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      10.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  }
+                }
+              }
+            },
             "visible": true
           },
           "type": "MeshComponent"
         }
       },
       "id": 3,
+      "parent": 19,
       "properties": {
         "active": true,
         "name": "Floor",
@@ -177,7 +66,7 @@
         "transform": {
           "rotate": [
             0.0,
-            0.0,
+            -0.0,
             0.0
           ],
           "scale": [
@@ -199,6 +88,12 @@
         "KamisamaDirector": {
           "order": 0,
           "properties": {
+            "plateA": {
+              "actor": 14
+            },
+            "plateB": {
+              "actor": 15
+            },
             "script": "KamisamaDirector"
           },
           "type": "ScriptComponent"
@@ -240,9 +135,57 @@
         }
       },
       "id": 5,
+      "parent": 18,
       "properties": {
         "active": true,
         "name": "EventDispatcher",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 1,
+          "properties": {
+            "maxLimitTime": 5.0,
+            "remainingTime": 0.0,
+            "script": "TimeLimit",
+            "state": "Ready"
+          },
+          "type": "ScriptComponent"
+        },
+        "UILayoutComponent": {
+          "order": 0,
+          "properties": {
+            "layout": "UITimeLimit",
+            "sortingOrder": 0,
+            "visible": true
+          },
+          "type": "UILayoutComponent"
+        }
+      },
+      "id": 6,
+      "properties": {
+        "active": true,
+        "name": "TimeLimit",
         "tags": [],
         "transform": {
           "rotate": [
@@ -269,12 +212,572 @@
         "Script": {
           "order": 0,
           "properties": {
+            "script": "ScoreView",
+            "smoothDurationMs": 3.0
+          },
+          "type": "ScriptComponent"
+        },
+        "UILayoutComponent": {
+          "order": 1,
+          "properties": {
+            "layout": "UIScoreView",
+            "sortingOrder": 0,
+            "visible": true
+          },
+          "type": "UILayoutComponent"
+        }
+      },
+      "id": 9,
+      "parent": 16,
+      "properties": {
+        "active": true,
+        "name": "ScoreView",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "ScoreManager",
+            "viewActor": {
+              "actor": 9
+            }
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 10,
+      "parent": 16,
+      "properties": {
+        "active": true,
+        "name": "ScoreManager",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "points": [],
+            "script": "PointTable"
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 11,
+      "parent": 16,
+      "properties": {
+        "active": true,
+        "name": "PointTable",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "ComboView"
+          },
+          "type": "ScriptComponent"
+        },
+        "UILayoutComponent": {
+          "order": 1,
+          "properties": {
+            "layout": "UIComboView",
+            "sortingOrder": 0,
+            "visible": true
+          },
+          "type": "UILayoutComponent"
+        }
+      },
+      "id": 12,
+      "parent": 17,
+      "properties": {
+        "active": true,
+        "name": "ComboView",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "ComboManager",
+            "viewActor": {
+              "actor": 12
+            }
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 13,
+      "parent": 17,
+      "properties": {
+        "active": true,
+        "name": "ComboManager",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "MeshComponent": {
+          "order": 0,
+          "properties": {
+            "model": "EngineResources/Model/sphere.gltf",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "visible": true
+          },
+          "type": "MeshComponent"
+        },
+        "Script": {
+          "order": 1,
+          "properties": {
+            "amount": 112.80000305175781,
+            "script": "Plate"
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 14,
+      "parent": 19,
+      "properties": {
+        "active": true,
+        "name": "PlateA",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            -5.0,
+            1.5,
+            -8.199999809265137
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "MeshComponent": {
+          "order": 0,
+          "properties": {
+            "model": "EngineResources/Model/sphere.gltf",
+            "offset": {
+              "rotate": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "translate": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "visible": true
+          },
+          "type": "MeshComponent"
+        },
+        "Script": {
+          "order": 1,
+          "properties": {
+            "amount": 112.80000305175781,
+            "script": "Plate"
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 15,
+      "parent": 19,
+      "properties": {
+        "active": true,
+        "name": "PlateB",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            5.0,
+            1.5,
+            -8.199999809265137
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {},
+      "id": 16,
+      "properties": {
+        "active": true,
+        "name": "ScoreSystem",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {},
+      "id": 17,
+      "properties": {
+        "active": true,
+        "name": "ComboSystem",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {},
+      "id": 18,
+      "properties": {
+        "active": true,
+        "name": "Tool",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {},
+      "id": 19,
+      "properties": {
+        "active": true,
+        "name": "Object",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "TimeUp"
+          },
+          "type": "ScriptComponent"
+        },
+        "UILayoutComponent": {
+          "order": 1,
+          "properties": {
+            "layout": "UITimeUp",
+            "sortingOrder": 0,
+            "visible": true
+          },
+          "type": "UILayoutComponent"
+        }
+      },
+      "id": 20,
+      "properties": {
+        "active": true,
+        "name": "TimeUp",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "HighScoreStorage",
+            "tableActor": {
+              "actor": 22
+            },
+            "tableDirectoryPath": "Saves/",
+            "tableFileName": "HighScoreTable.json"
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 21,
+      "parent": 16,
+      "properties": {
+        "active": true,
+        "name": "HighScoreStorage",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
+            "script": "HighScoreTable"
+          },
+          "type": "ScriptComponent"
+        }
+      },
+      "id": 22,
+      "parent": 16,
+      "properties": {
+        "active": true,
+        "name": "HighScoreTable",
+        "tags": [],
+        "transform": {
+          "rotate": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "translate": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "type": "Actor"
+    },
+    {
+      "components": {
+        "Script": {
+          "order": 0,
+          "properties": {
             "script": "MiconConnection"
           },
           "type": "ScriptComponent"
         }
       },
-      "id": 6,
+      "id": 23,
+      "parent": 18,
       "properties": {
         "active": true,
         "name": "MiconConnection",

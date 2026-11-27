@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Script\system\MicroController\MiconConnection.cpp" />
+    <ClCompile Include="Script\system\MicroController\MiconConnection.cpp">
+      <Filter>Script\system\MicroController</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\event\TimeUp.cpp">
+      <Filter>Script\system\event</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Eating\Plate.cpp">
+      <Filter>Script\Eating</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Eating\Eater.cpp">
+      <Filter>Script\Eating</Filter>
+    </ClCompile>
     <ClCompile Include="Script\Director\KamisamaDirector.cpp">
       <Filter>Script\Director</Filter>
     </ClCompile>
@@ -11,7 +22,31 @@
     <ClCompile Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.cpp">
       <Filter>Script\HUD\SatisfactionGauge</Filter>
     </ClCompile>
-    <ClCompile Include="Script\system\EventDispatcher.cpp">
+    <ClCompile Include="Script\system\combo\ComboManager.cpp">
+      <Filter>Script\system\combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\combo\ComboView.cpp">
+      <Filter>Script\system\combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\event\EventDispatcher.cpp">
+      <Filter>Script\system\event</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\score\HighScoreStorage.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\score\HighScoreTable.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\score\PointTable.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\score\ScoreManager.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\score\ScoreView.cpp">
+      <Filter>Script\system\score</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\system\TimeLimit.cpp">
       <Filter>Script\system</Filter>
     </ClCompile>
     <ClCompile Include="Source\Director\Lane.cpp">
@@ -23,8 +58,12 @@
     <ClCompile Include="Source\system\EventSubscription.cpp">
       <Filter>Source\system</Filter>
     </ClCompile>
-    <ClCompile Include="$(IntDir)TakoReflection.gen.cpp" />
-    <ClCompile Include="Source\system\Microcontroller\MiconParse.cpp" />
+    <ClCompile Include="Source\system\Microcontroller\MiconParse.cpp">
+      <Filter>Source\system\Microcontroller</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\utility\imgui\ImWidgetWrapper.cpp">
+      <Filter>Source\utility\imgui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Script">
@@ -35,6 +74,9 @@
     </Filter>
     <Filter Include="Script\Director">
       <UniqueIdentifier>{51af6a32-bd7b-410d-9469-b79ab16c1765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Eating">
+      <UniqueIdentifier>{3ae82763-b5d3-44bc-b674-fc9d13b43063}</UniqueIdentifier>
     </Filter>
     <Filter Include="Script\Entity">
       <UniqueIdentifier>{a2f203a0-a4ac-4cc9-9c2b-71218984e208}</UniqueIdentifier>
@@ -48,15 +90,53 @@
     <Filter Include="Source\Director">
       <UniqueIdentifier>{124639ea-130f-4d50-897c-5873ed7cf83b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\event">
+      <UniqueIdentifier>{d127e89d-74ea-43ab-af48-335f35c6c4ef}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source\system">
       <UniqueIdentifier>{6f30a1d3-d7fe-4c39-add8-eaf14bfba1e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\type">
+      <UniqueIdentifier>{4ed98f39-d3d0-47ed-882d-2ca1f5d8be24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\utility">
+      <UniqueIdentifier>{ffcc5f3c-9e40-4cbb-ac3c-b59dc71b4a5c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Script\HUD\SatisfactionGauge">
       <UniqueIdentifier>{c3a94dd3-09fc-4d56-b3dc-ec78e326c3a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Script\system\combo">
+      <UniqueIdentifier>{4a777a61-56fa-460b-afa8-ebfc6613a6f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\system\event">
+      <UniqueIdentifier>{e7c7e038-e9dd-4379-ad0e-cbf6fa1f7f2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\system\MicroController">
+      <UniqueIdentifier>{4bffa48f-06ef-4657-a176-889e0e43fdf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\system\score">
+      <UniqueIdentifier>{7944449f-7bbb-4074-9ae7-0f0ae52bded0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\system\Microcontroller">
+      <UniqueIdentifier>{fb8f8196-07ea-409d-92a3-b4728564be94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\utility\imgui">
+      <UniqueIdentifier>{d9b4b6fa-9590-4b08-b55e-37e36c4f09c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Script\system\MicroController\MiconConnection.h" />
+    <ClInclude Include="Script\system\MicroController\MiconConnection.h">
+      <Filter>Script\system\MicroController</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\event\TimeUp.h">
+      <Filter>Script\system\event</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Eating\Plate.h">
+      <Filter>Script\Eating</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Eating\Eater.h">
+      <Filter>Script\Eating</Filter>
+    </ClInclude>
     <ClInclude Include="Script\Director\KamisamaDirector.h">
       <Filter>Script\Director</Filter>
     </ClInclude>
@@ -66,11 +146,41 @@
     <ClInclude Include="Script\HUD\SatisfactionGauge\SatisfactionGauge.h">
       <Filter>Script\HUD\SatisfactionGauge</Filter>
     </ClInclude>
-    <ClInclude Include="Script\system\EventDispatcher.h">
+    <ClInclude Include="Script\system\combo\ComboManager.h">
+      <Filter>Script\system\combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\combo\ComboView.h">
+      <Filter>Script\system\combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\event\EventDispatcher.h">
+      <Filter>Script\system\event</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\HighScoreStorage.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\HighScoreTable.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\PointAction.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\PointTable.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\ScoreManager.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\score\ScoreView.h">
+      <Filter>Script\system\score</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\system\TimeLimit.h">
       <Filter>Script\system</Filter>
     </ClInclude>
     <ClInclude Include="Source\Director\Lane.h">
       <Filter>Source\Director</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\event\TimeLimitEvent.h">
+      <Filter>Source\event</Filter>
     </ClInclude>
     <ClInclude Include="Source\system\EventListener.h">
       <Filter>Source\system</Filter>
@@ -78,7 +188,23 @@
     <ClInclude Include="Source\system\EventSubscription.h">
       <Filter>Source\system</Filter>
     </ClInclude>
-    <ClInclude Include="Source\system\Microcontroller\MiconParse.h" />
-    <ClInclude Include="Source\system\Microcontroller\MiconMessage.h" />
+    <ClInclude Include="Source\system\Microcontroller\MiconMessage.h">
+      <Filter>Source\system\Microcontroller</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\system\Microcontroller\MiconParse.h">
+      <Filter>Source\system\Microcontroller</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\type\Combo.h">
+      <Filter>Source\type</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\type\Score.h">
+      <Filter>Source\type</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\utility\GameLog.h">
+      <Filter>Source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\utility\imgui\ImWidgetWrapper.h">
+      <Filter>Source\utility\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -45,7 +45,7 @@ class SatisfactionGauge : public Tako::Script
     };
 
     // 背景を、ゲージからワールドでずらす量
-    Tako::Vector3 offset_ = { 0.f, 0.f, 0.1f};
+    Tako::Vector3 offset_ = { 0.f, 0.f, 0.001f};
 
     // メッシュ再生成は描画コマンド記録中に行えないため、次の Tick まで遅延させる
     bool isRingDirty_ = false;
@@ -56,7 +56,7 @@ class SatisfactionGauge : public Tako::Script
     float decay_ = 0.f;
     float decayInterval_ = 1.f;
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
     float chargeBuf_ = 0.f;
     float reduceBuf_ = 0.f;
     float decayBuf_ = 0.f;
@@ -67,7 +67,7 @@ public:
     void BeginPlay() override;
     void Tick(float deltaTime) override;
 
-#ifdef _DEBUG
+#ifdef TAKO_EDITOR
     /// <summary>
     /// ゲージの調整（Inspector に出る）。位置と大きさは Actor の Transform、色は Mesh の Rendering で変える
     /// </summary>
@@ -90,9 +90,12 @@ public:
      */
     void SetDecay(float value, float interval);
 
+    bool IsFull() const;
+
 private:
     void RebuildRings();
     void Decay();
+	void Apply(float delta);
 
     Tako::MeshComponent* BackgroundMesh() const;
 };

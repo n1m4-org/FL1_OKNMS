@@ -25,6 +25,8 @@ void Kamisama::Tick(float deltaTime)
 
 void Kamisama::Initialize(const Tako::Vector3& initPos)
 {
+    pEater_ = GetOwner()->GetScript<Eater>();
+
     GetOwner()->GetTransform().translate = initPos;
 
     OnEnter(State::Wandering);
@@ -32,14 +34,19 @@ void Kamisama::Initialize(const Tako::Vector3& initPos)
 
 void Kamisama::BeginExit()
 {
+    if (state_ == State::Exiting || state_ == State::Exited) return;
+
     ChangeState(State::Exiting);
 }
 
-void Kamisama::AttachToLane(const Tako::Vector3& target)
+void Kamisama::AttachToLane(const Tako::Vector3& target, Plate* plate) 
 {
     // レーンを割り当て移動を開始する
     targetPosition_= target;
     targetPosition_.y = GetOwner()->GetTransform().translate.y; // Y座標は現在の位置を維持
+    
+    if(pEater_) pEater_->SetPlate(plate);
+
     ChangeState(State::Moving);
 }
 
@@ -97,6 +104,8 @@ void Kamisama::EnterWandering()
 {
     wanderStartPosition_= GetOwner()->GetTransform().translate;
     wanderTarget_ = SelectWanderTarget();
+
+    if (pEater_) pEater_->SetGaugeVisible(false);
 }
 
 void Kamisama::UpdateWandering(float deltaTime)
@@ -131,7 +140,6 @@ void Kamisama::UpdateWandering(float deltaTime)
     Tako::Vector3 newPos = translate + direction * (wanderSpeed_ * deltaTime);
 
     translate = newPos;
-
 }
 
 Tako::Vector3 Kamisama::SelectWanderTarget() const
@@ -151,6 +159,7 @@ void Kamisama::EnterMoving()
     // 移動状態に変更
     startPosition_= GetOwner()->GetTransform().translate;
     moveElapsed_ = 0.0f;
+    if (pEater_) pEater_->SetGaugeVisible(true);
 }
 
 void Kamisama::UpdateMoving(float deltaTime)
@@ -171,8 +180,11 @@ void Kamisama::UpdateMoving(float deltaTime)
     }
 }
 
-void Kamisama::EnterEating()
-{}
+void Kamisama::EnterEating() 
+{
+    if (!pEater_) return;
+    pEater_->Activate(true);
+}
 
 void Kamisama::UpdateEating()
 {
@@ -180,8 +192,12 @@ void Kamisama::UpdateEating()
     // アニメーションやゲージの更新イベントなどをここで処理する
 }
 
-void Kamisama::EnterExiting()
-{}
+void Kamisama::EnterExiting() 
+{
+    if (!pEater_) return;
+    pEater_->Activate(false);
+    pEater_->SetPlate(nullptr);
+}
 
 void Kamisama::UpdateExiting()
 {

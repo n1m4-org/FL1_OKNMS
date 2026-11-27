@@ -5,6 +5,7 @@
 #include <any>
 #include <vector>
 #include <utility>
+#include <string>
 #include "./EventSubscription.h"
 
 /// <summary>
@@ -60,6 +61,11 @@ public:
         return id;
     }
 
+    void SetOnDispatchedCallback(std::function<void(const std::string&)> callback)
+    {
+        onDispatchedCb_ = std::move(callback);
+    }
+
 private:
     EventListener() = default;
     ~EventListener() = default;
@@ -69,6 +75,8 @@ private:
     std::unordered_map<EventID, std::vector<Handler>> subscribers_;
     std::vector<std::pair<EventID, std::any>> eventQueue_;
     static inline EventID nextEventID_ = 0;
+
+    std::function<void(const std::string&)> onDispatchedCb_;
 };
 
 template <typename T>

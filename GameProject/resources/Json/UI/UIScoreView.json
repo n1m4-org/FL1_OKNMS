@@ -1,0 +1,76 @@
+{
+  "elements": [
+    {
+      "anchorMax": [
+        1.0,
+        0.5
+      ],
+      "anchorMin": [
+        1.0,
+        0.5
+      ],
+      "children": [],
+      "color": [
+        0.8599221706390381,
+        0.5555922985076904,
+        0.2342200130224228,
+        1.0
+      ],
+      "flip": [
+        false,
+        false
+      ],
+      "locked": true,
+      "name": "Score",
+      "pivot": [
+        1.0,
+        0.5
+      ],
+      "position": [
+        -32.0,
+        0.0
+      ],
+      "postEffect": false,
+      "preserveAspect": false,
+      "rotation": 0.0,
+      "size": [
+        552.56103515625,
+        72.0
+      ],
+      "sliceOverride": false,
+      "sliced": false,
+      "text": {
+        "align": [
+          1.0,
+          0.5
+        ],
+        "font": "",
+        "lineSpacing": 1.0,
+        "outlineColor": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "outlineWidth": 4.0,
+        "size": 72.0,
+        "string": "00000000",
+        "wrap": true
+      },
+      "texture": "",
+      "uvLeftTop": [
+        0.0,
+        0.0
+      ],
+      "uvSize": [
+        0.0,
+        0.0
+      ],
+      "visible": true
+    }
+  ],
+  "referenceResolution": [
+    1920.0,
+    1080.0
+  ]
+}

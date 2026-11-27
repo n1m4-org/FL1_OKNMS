@@ -3,6 +3,10 @@
 #include <Script.h>
 #include <Vector3.h>
 
+#include "Eating/Eater.h"
+
+class Plate;
+
 /// <summary>
 /// かみさま。徘徊し、レーンを割り当てられるとそこへ移動する。
 /// モデル・大きさ・色は、プレハブ（Kamisama.prefab.json）の Mesh と Transform が持つ
@@ -33,10 +37,13 @@ public:
 
     void BeginExit();
 
-    void AttachToLane(const Tako::Vector3& target);
+    void AttachToLane(const Tako::Vector3& target, Plate* plate);
     bool IsWandering() const { return state_ == State::Wandering; }
     bool IsAttachedToLane() const { return state_ == State::Moving || state_ == State::Eating; }
     bool IsExited() const { return state_ == State::Exited; }
+
+    bool IsEating() const { return state_ == State::Eating; }
+    bool IsSatisfied() const { return state_ == State::Eating && pEater_ && pEater_->IsSatisfied(); }
 
 private:
 
@@ -58,7 +65,6 @@ private:
 
     void EnterExiting();
     void UpdateExiting();
-
 
 private:
 
@@ -83,4 +89,8 @@ private:
     // 移動時間
     float moveDuration_ = 2.0f;
     float moveElapsed_ = 0.0f;
+
+    /// レーニング中のパラメータ
+    // 
+    Eater* pEater_ = nullptr;
 };
